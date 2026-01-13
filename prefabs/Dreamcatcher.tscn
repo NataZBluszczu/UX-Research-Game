@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdh16qlqmnd8d"]
+
+[ext_resource type="Script" uid="uid://bq4dpk2y3c8ek" path="res://scripts/pickup_item.gd" id="1_n8idg"]
+[ext_resource type="Texture2D" uid="uid://cvs1f4qji3k7r" path="res://sprites/dreamcatcher.png" id="2_n8idg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21mh2"]
+
+[node name="Dreamcatcher" type="Node2D"]
+script = ExtResource("1_n8idg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.9802322e-08, 2)
+scale = Vector2(3.97, 3.97)
+shape = SubResource("CapsuleShape2D_21mh2")
+
+[node name="Dreamcatcher" type="Sprite2D" parent="."]
+position = Vector2(-2.3841858e-07, 0)
+scale = Vector2(0.40109888, 0.40109882)
+texture = ExtResource("2_n8idg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

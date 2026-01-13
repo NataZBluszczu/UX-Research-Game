@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8wb5yy4qxjjq"]
+
+[ext_resource type="Texture2D" uid="uid://3ygtbv67aw85" path="res://sprites/desk.jpg" id="1_atdep"]
+[ext_resource type="Texture2D" uid="uid://cbcrg8cm75585" path="res://sprites/banknote.png" id="2_nm04y"]
+[ext_resource type="Material" uid="uid://b62wyc5paqg0p" path="res://shaders/uv_light.tres" id="3_pars6"]
+[ext_resource type="Texture2D" uid="uid://bomyulen331r0" path="res://sprites/text.png" id="4_uljb8"]
+[ext_resource type="Script" uid="uid://by6klqk60e86y" path="res://scripts/uv_sprite.gd" id="5_l4ph4"]
+[ext_resource type="Texture2D" uid="uid://dsuuj7q0ag24m" path="res://sprites/fingerprint.png" id="6_43ngp"]
+[ext_resource type="Script" uid="uid://ps1hubxm4e3w" path="res://scripts/lamp_pac.gd" id="7_atdep"]
+[ext_resource type="Texture2D" uid="uid://670v42c5ch6t" path="res://sprites/UV.png" id="8_gqk2f"]
+[ext_resource type="Texture2D" uid="uid://xsme5rou4srg" path="res://sprites/lamp.png" id="9_24mwj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21lvd"]
+size = Vector2(351, 143)
+
+[node name="Desk" type="Node2D"]
+
+[node name="Desk" type="Sprite2D" parent="."]
+position = Vector2(965.00006, 592)
+scale = Vector2(1.534261, 1.5342611)
+texture = ExtResource("1_atdep")
+
+[node name="Banknote" type="Sprite2D" parent="Desk"]
+position = Vector2(-104.28472, -179.23938)
+rotation = 0.212562
+scale = Vector2(0.4306679, 0.43066788)
+texture = ExtResource("2_nm04y")
+
+[node name="Banknote2" type="Sprite2D" parent="Desk"]
+position = Vector2(37.577988, 75.155914)
+scale = Vector2(0.4306679, 0.43066788)
+texture = ExtResource("2_nm04y")
+
+[node name="Banknote3" type="Sprite2D" parent="Desk"]
+position = Vector2(288.08655, -93.204475)
+rotation = -2.241817
+scale = Vector2(0.4306679, 0.43066788)
+texture = ExtResource("2_nm04y")
+
+[node name="Banknote4" type="Sprite2D" parent="Desk"]
+position = Vector2(-313.54126, 85.72473)
+rotation = -0.37885076
+scale = Vector2(0.4306679, 0.43066788)
+texture = ExtResource("2_nm04y")
+
+[node name="Banknote5" type="Sprite2D" parent="Desk"]
+position = Vector2(223.11928, 140.91739)
+rotation = 0.5149488
+scale = Vector2(0.4306679, 0.43066788)
+texture = ExtResource("2_nm04y")
+
+[node name="Text" type="Sprite2D" parent="."]
+material = ExtResource("3_pars6")
+position = Vector2(474.99997, 729)
+rotation = -0.13462481
+scale = Vector2(0.13684787, 0.13684787)
+texture = ExtResource("4_uljb8")
+script = ExtResource("5_l4ph4")
+
+[node name="Fingerprint" type="Sprite2D" parent="."]
+material = ExtResource("3_pars6")
+position = Vector2(1109, 695)
+rotation = 0.40439215
+scale = Vector2(0.14962482, 0.14962482)
+texture = ExtResource("6_43ngp")
+script = ExtResource("5_l4ph4")
+
+[node name="UVSprite" type="Sprite2D" parent="."]
+material = ExtResource("3_pars6")
+position = Vector2(895, 337)
+rotation = -0.3958007
+scale = Vector2(0.13789868, 0.13789867)
+texture = ExtResource("6_43ngp")
+script = ExtResource("5_l4ph4")
+
+[node name="Lamp" type="Node2D" parent="."]
+position = Vector2(334, 153)
+script = ExtResource("7_atdep")
+
+[node name="Uv" type="Sprite2D" parent="Lamp"]
+visible = false
+position = Vector2(0, 273)
+scale = Vector2(0.45568487, 0.45568505)
+texture = ExtResource("8_gqk2f")
+
+[node name="Lamp" type="Sprite2D" parent="Lamp"]
+position = Vector2(7.999999, 137)
+scale = Vector2(0.47208843, 0.4720884)
+texture = ExtResource("9_24mwj")
+
+[node name="LampArea2D" type="Area2D" parent="Lamp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/LampArea2D"]
+visible = false
+position = Vector2(6, 137)
+shape = SubResource("RectangleShape2D_21lvd")
+
+[connection signal="input_event" from="Lamp/LampArea2D" to="Lamp" method="_on_lamp_area_2d_input_event"]
+[connection signal="mouse_entered" from="Lamp/LampArea2D" to="Lamp" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Lamp/LampArea2D" to="Lamp" method="_on_area_2d_mouse_exited"]

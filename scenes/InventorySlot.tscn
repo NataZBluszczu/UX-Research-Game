@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://3owqrkw0c2o0"]
+
+[ext_resource type="Script" uid="uid://cb4o6cyt5opw1" path="res://scripts/inventory_slot.gd" id="1_14any"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fsqa"]
+size = Vector2(128, 128)
+
+[node name="InventorySlot" type="StaticBody2D" groups=["dropable"]]
+script = ExtResource("1_14any")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["dropable"]]
+shape = SubResource("RectangleShape2D_2fsqa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

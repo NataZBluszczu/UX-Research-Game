@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2dq226a7wlrv"]
+
+[ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
+[ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
+[ext_resource type="PackedScene" uid="uid://bb2f4q4tntslk" path="res://prefabs/Board.tscn" id="3_7sa2y"]
+[ext_resource type="PackedScene" uid="uid://cdh16qlqmnd8d" path="res://prefabs/Dreamcatcher.tscn" id="3_bj4ne"]
+[ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="4_xhlaj"]
+[ext_resource type="Texture2D" uid="uid://dxf3a1ow8yis5" path="res://sprites/kocioł.png" id="5_xhlaj"]
+[ext_resource type="Script" uid="uid://djhqqcuyw2w4w" path="res://scripts/cauldron.gd" id="6_hwyyj"]
+[ext_resource type="PackedScene" uid="uid://e8yhmohow3px" path="res://prefabs/Amulet.tscn" id="7_bc387"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj4ne"]
+
+[node name="Room1" type="Node2D"]
+script = ExtResource("1_i1w2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(810, 540)
+texture = ExtResource("1_um1ds")
+
+[node name="Cauldron" type="Node2D" parent="."]
+script = ExtResource("6_hwyyj")
+
+[node name="CauldronSprite" type="Sprite2D" parent="Cauldron"]
+position = Vector2(932, 695)
+texture = ExtResource("5_xhlaj")
+
+[node name="CauldronBody" type="StaticBody2D" parent="Cauldron" groups=["usage"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronBody"]
+position = Vector2(932, 752)
+scale = Vector2(20.925, 20.925)
+shape = SubResource("CircleShape2D_bj4ne")
+
+[node name="Area2D" type="Area2D" parent="Cauldron"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/Area2D"]
+position = Vector2(932, 752)
+scale = Vector2(20.925, 20.925)
+shape = SubResource("CircleShape2D_bj4ne")
+
+[node name="Dreamcatcher" parent="." instance=ExtResource("3_bj4ne")]
+position = Vector2(1543, 116)
+
+[node name="Ball" parent="." instance=ExtResource("4_xhlaj")]
+position = Vector2(1258, 879)
+
+[node name="Amulet" parent="." instance=ExtResource("7_bc387")]
+position = Vector2(928, 465)
+
+[node name="Board" parent="." instance=ExtResource("3_7sa2y")]
+position = Vector2(1401, 879)
+
+[connection signal="input_event" from="Cauldron/CauldronBody" to="Cauldron" method="_on_cauldron_input_event"]
+[connection signal="input_event" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_input_event"]

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b62wyc5paqg0p"]
+
+[ext_resource type="Shader" uid="uid://bwbeaxx8ybnwt" path="res://shaders/uv_light.gdshader" id="1_std1p"]
+
+[resource]
+shader = ExtResource("1_std1p")
+shader_parameter/uv_light_global_pos = Vector2(0, 0)
+shader_parameter/uv_light_size = Vector2(0, 0)
+shader_parameter/uv_glow_color = Color(0.2, 0.8, 1, 1)
+shader_parameter/glow_intensity = 10.0

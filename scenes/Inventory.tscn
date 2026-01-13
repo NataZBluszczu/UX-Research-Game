@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6s2um3yusrr8"]
+
+[ext_resource type="Script" uid="uid://d1pm3whudlt5j" path="res://scripts/inventory_ui.gd" id="1_elp5n"]
+[ext_resource type="PackedScene" uid="uid://3owqrkw0c2o0" path="res://scenes/InventorySlot.tscn" id="1_kh8if"]
+
+[node name="InventoryPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 915.0
+offset_top = 3.0
+offset_right = 1736.4801
+offset_bottom = 535.0
+mouse_filter = 2
+script = ExtResource("1_elp5n")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 705.0
+offset_top = -3.0
+offset_right = 1005.0
+offset_bottom = 1077.0
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -480.0
+offset_right = 64.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/v_separation = 80
+
+[node name="Slot1" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="InventorySlot1" parent="Panel/GridContainer/Slot1" instance=ExtResource("1_kh8if")]
+position = Vector2(64, 64)
+
+[node name="Item" type="Node2D" parent="Panel/GridContainer/Slot1"]
+position = Vector2(64, 64)
+
+[node name="Slot2" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InventorySlot2" parent="Panel/GridContainer/Slot2" instance=ExtResource("1_kh8if")]
+position = Vector2(64, 64)
+
+[node name="Item" type="Node2D" parent="Panel/GridContainer/Slot2"]
+position = Vector2(64, 64)
+
+[node name="Slot3" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InventorySlot3" parent="Panel/GridContainer/Slot3" instance=ExtResource("1_kh8if")]
+position = Vector2(64, 64)
+
+[node name="Item" type="Node2D" parent="Panel/GridContainer/Slot3"]
+position = Vector2(64, 64)
+
+[node name="Slot4" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InventorySlot4" parent="Panel/GridContainer/Slot4" instance=ExtResource("1_kh8if")]
+position = Vector2(64, 64)
+
+[node name="Item" type="Node2D" parent="Panel/GridContainer/Slot4"]
+position = Vector2(64, 64)
+
+[node name="Slot5" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="InventorySlot5" parent="Panel/GridContainer/Slot5" instance=ExtResource("1_kh8if")]
+position = Vector2(64, 64)
+
+[node name="Item" type="Node2D" parent="Panel/GridContainer/Slot5"]
+position = Vector2(64, 64)
