@@ -36,3 +36,22 @@ func is_slot_free(slot_index: int) -> bool:
 	if items[slot_index - 1] == null:
 		return 1
 	return 0
+	
+func _input(event: InputEvent):
+	if event.is_action_pressed("2"):
+		for i in range(items.size()):
+			print(items[i])
+			
+func get_item_index(item_id: String) -> int:
+	for i in range(items.size()):
+		if items[i] == item_id:
+			return i
+	printerr("item not found")
+	return 10
+
+func replace_item(item_id: String, new_slot_index: int) -> void:
+	var old_index = get_item_index(item_id)
+	items[old_index] = null
+	add_item_index(item_id, new_slot_index)
+	
+	

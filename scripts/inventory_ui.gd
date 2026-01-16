@@ -1,6 +1,8 @@
 extends Control
 
 @onready var grid: GridContainer = $Panel/GridContainer
+@onready var inventory_items: Node2D = $"../InventoryItems"
+
 
 var ITEM_SCENES := {
 	"Ball": preload("res://prefabs/Ball.tscn"),
@@ -14,19 +16,22 @@ func _ready():
 	_update_slots()
 
 func _update_slots():
+	for item in inventory_items.get_children():
+		item.queue_free()
+	await get_tree().process_frame
+	
 	var i := 0
 	for slot in grid.get_children():
 		var icon_container = slot.get_node("Item")
 		
-		for child in icon_container.get_children():
-			child.queue_free()
-		
-		# 2. sprawdź co siedzi w logice
 		var item_id = InventoryManager.items[i]
 		if item_id != null and ITEM_SCENES.has(item_id):
 			var item_scene: PackedScene = ITEM_SCENES[item_id]
 			var item_instance = item_scene.instantiate()
-			item_instance.position = Vector2.ZERO
-			icon_container.add_child(item_instance)
+			item_instance.name = item_id
+			var icon_global = icon_container.get_global_position()
+			inventory_items.add_child(item_instance)
+			item_instance.position = icon_global
+			item_instance.name = item_id
 		
 		i += 1

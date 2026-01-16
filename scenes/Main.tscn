@@ -19,6 +19,8 @@ script = ExtResource("1_nxtc6")
 
 [node name="Room3" parent="." instance=ExtResource("5_q8u5g")]
 
+[node name="InventoryItems" type="Node2D" parent="."]
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="RightArrow" type="TextureButton" parent="UI"]

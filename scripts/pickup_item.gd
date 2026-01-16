@@ -25,10 +25,15 @@ func _process(delta):
 				if is_inside_dropable:
 					var slot_index = body_ref.get_slot_index()
 					if InventoryManager.is_slot_free(slot_index):
-						tween.tween_property(self,"position",body_ref.global_position,0.2).set_ease(Tween.EASE_OUT)
-						await tween.finished
-						InventoryManager.add_item_index(name, slot_index)
-						queue_free()
+						if InventoryManager.has_item(name):
+							tween.tween_property(self,"position",body_ref.global_position,0.2).set_ease(Tween.EASE_OUT)
+							await tween.finished
+							InventoryManager.replace_item(name, slot_index)
+						else:
+							tween.tween_property(self,"position",body_ref.global_position,0.2).set_ease(Tween.EASE_OUT)
+							await tween.finished
+							InventoryManager.add_item_index(name, slot_index)
+							queue_free()
 					else:
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 				else:
@@ -38,6 +43,7 @@ func _process(delta):
 						GameManager.add_to_cauldron(name)
 						body_ref.get_parent().pulse_animation()
 						InventoryManager.remove_item(name)
+						queue_free()
 					else:
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 	else:
@@ -75,7 +81,7 @@ func toggle_selected():
 
 func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 	if body.is_in_group("usage"):
-		if body.name == "Cauldron":
+		if body.name == "CauldronBody":
 			above_cauldron = true
 			body_ref = body
 	if body.is_in_group('dropable'):
@@ -84,6 +90,7 @@ func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 		body_ref = body
 
 func _on_area_2d_body_exited(body) -> void:
+	above_cauldron = false
 	if body.is_in_group('dropable') and body_ref == body:
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
