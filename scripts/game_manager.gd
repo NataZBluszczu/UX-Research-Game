@@ -16,7 +16,7 @@ func _input(event):
 			is_drag_mode = !is_drag_mode
 			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
 		if event.is_action_pressed("2"):
-			print(added_vials)
+			print(finish_items_collected)
 
 func _process(delta: float) -> void:
 	if is_drag_mode:
@@ -24,6 +24,8 @@ func _process(delta: float) -> void:
 		
 #zagadka z kotłem
 var cauldron_items = ["Ball", "Board", "Dreamcatcher"]
+var finish_items = ["Ball", "Board", "Dreamcatcher", "Amulet"]
+var finish_items_collected = ["","","",""]
 var collected_items = []
 var all_items_added = false
 
@@ -32,6 +34,8 @@ var pattern = ["Blue","Blue","Blue","Purple","Purple"]
 
 signal spawn_amulet
 signal vial_quest_finished
+signal finish_quest_finished
+signal finish_item_added(item_name: String, shelf_nr: String)
 
 func add_to_cauldron(item_name: String):
 	if item_name in cauldron_items and item_name not in collected_items:
@@ -43,6 +47,7 @@ func add_vial_to_cauldron(color: String):
 	added_vials.append(color)
 	if ends_with_pattern(added_vials, pattern):
 		vial_quest_finished.emit()
+		spawn_amulet.emit()
 		print("TRAFIONY WZÓR!")
 
 func ends_with_pattern(seq: Array, pat: Array) -> bool:
@@ -52,3 +57,19 @@ func ends_with_pattern(seq: Array, pat: Array) -> bool:
 		if seq[seq.size() - pat.size() + i] != pat[i]:
 			return false
 	return true
+	
+func correct_finish_item(item_name: String, shelf_nr: String) -> bool:
+	if item_name in finish_items and item_name not in finish_items_collected:
+		var shelf_int = int(shelf_nr)
+		if finish_items_collected[shelf_int - 1] == "":
+			finish_items_collected[shelf_int - 1] = item_name
+			finish_item_added.emit(item_name, shelf_nr)
+		else:
+			return false
+		if not "" in finish_items_collected:
+			finish_quest_finished.emit()
+		return true
+	else:
+		return false
+		
+	

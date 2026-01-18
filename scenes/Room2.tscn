@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd8a7nenn56ff"]
+[gd_scene load_steps=4 format=3 uid="uid://dd8a7nenn56ff"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_uq8dp"]
 [ext_resource type="Texture2D" uid="uid://dv0k8fgcxjs0x" path="res://sprites/room2/Gemini_Generated_Image_kpaq7mkpaq7mkpaq.png" id="2_uq8dp"]
+[ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="3_oe7il"]
 
 [node name="Room2" type="Node2D"]
 
@@ -13,3 +14,7 @@ texture = ExtResource("1_uq8dp")
 position = Vector2(809.8446, 539.86884)
 scale = Vector2(1.2983259, 1.2983922)
 texture = ExtResource("2_uq8dp")
+
+[node name="Matches" parent="." instance=ExtResource("3_oe7il")]
+position = Vector2(609, 427)
+scale = Vector2(1, 1)

@@ -8,7 +8,7 @@ var offset: Vector2
 var initialPos : Vector2
 var is_selected = false
 
-var above_cauldron = false
+var above_shelf = false
 
 func _process(delta):
 	if GameManager.is_drag_mode == true:
@@ -38,14 +38,18 @@ func _process(delta):
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 				else:
 					tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-				if above_cauldron:
+				if above_shelf:
 					if InventoryManager.has_item(name):
-						GameManager.add_to_cauldron(name)
-						body_ref.get_parent().pulse_animation()
-						InventoryManager.remove_item(name)
-						queue_free()
+						var shelf_nr = body_ref.name.right(1)
+						if GameManager.correct_finish_item(name, shelf_nr):
+							InventoryManager.remove_item(name)
+							queue_free()
+						else:
+							tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 					else:
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
+						
+						
 	else:
 		if clickable:
 			if Input.is_action_just_pressed("click"):
@@ -81,8 +85,8 @@ func toggle_selected():
 
 func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 	if body.is_in_group("usage"):
-		if body.name == "CauldronBody":
-			above_cauldron = true
+		if body.name.contains("Shelf"):
+			above_shelf = true
 			body_ref = body
 	if body.is_in_group('dropable'):
 		is_inside_dropable = true
@@ -90,7 +94,7 @@ func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 		body_ref = body
 
 func _on_area_2d_body_exited(body) -> void:
-	above_cauldron = false
+	above_shelf = false
 	if body.is_in_group('dropable') and body_ref == body:
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)

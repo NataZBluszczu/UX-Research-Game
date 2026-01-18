@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=14 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
 [ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
@@ -7,6 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dsse3npw0nwiq" path="res://sprites/room3/circle.png" id="3_5hlaq"]
 [ext_resource type="Texture2D" uid="uid://lbme7cqd6yc6" path="res://sprites/room3/shelf.png" id="4_d6xrr"]
 [ext_resource type="Texture2D" uid="uid://dlihnfmmjh4oh" path="res://sprites/room3/youescaped.png" id="5_784tl"]
+[ext_resource type="Texture2D" uid="uid://cd3xall304fep" path="res://sprites/amulet.png" id="7_ls135"]
+[ext_resource type="Texture2D" uid="uid://c6ytqe6kv3j5e" path="res://sprites/ball.png" id="8_0jg4w"]
+[ext_resource type="Texture2D" uid="uid://csh24g40apyuh" path="res://sprites/board.png" id="9_jr2i7"]
+[ext_resource type="Texture2D" uid="uid://cvs1f4qji3k7r" path="res://sprites/dreamcatcher.png" id="10_sg02c"]
+[ext_resource type="Script" uid="uid://tx2e27kvmww0" path="res://scripts/shelf.gd" id="12_0jg4w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ls135"]
 
 [node name="Room3" type="Node2D"]
 script = ExtResource("1_s61je")
@@ -35,22 +42,199 @@ position = Vector2(803.0897, 490.3006)
 scale = Vector2(0.6277345, 0.62773436)
 texture = ExtResource("3_5hlaq")
 
-[node name="Shelf" type="Sprite2D" parent="."]
+[node name="FinalItems" type="Node2D" parent="."]
+
+[node name="S1" type="Node2D" parent="FinalItems"]
+
+[node name="Amulet" type="Sprite2D" parent="FinalItems/S1"]
+visible = false
+position = Vector2(805, 646)
+scale = Vector2(0.20600003, 0.20600003)
+texture = ExtResource("7_ls135")
+
+[node name="Ball" type="Sprite2D" parent="FinalItems/S1"]
+visible = false
+position = Vector2(809, 641)
+scale = Vector2(0.3661765, 0.36617655)
+texture = ExtResource("8_0jg4w")
+
+[node name="Board" type="Sprite2D" parent="FinalItems/S1"]
+visible = false
+position = Vector2(809, 661)
+scale = Vector2(0.40000123, 0.40000123)
+texture = ExtResource("9_jr2i7")
+
+[node name="Dreamcatcher" type="Sprite2D" parent="FinalItems/S1"]
+visible = false
+position = Vector2(809, 658)
+scale = Vector2(0.38202792, 0.38202792)
+texture = ExtResource("10_sg02c")
+
+[node name="ShelfSprite" type="Sprite2D" parent="FinalItems/S1"]
 position = Vector2(809.0898, 710.30054)
 scale = Vector2(0.37044418, 0.37044418)
 texture = ExtResource("4_d6xrr")
 
-[node name="Shelf2" type="Sprite2D" parent="."]
+[node name="Shelf1" type="StaticBody2D" parent="FinalItems/S1" groups=["usage"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S1/Shelf1"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="Area1" type="Area2D" parent="FinalItems/S1"]
+script = ExtResource("12_0jg4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S1/Area1"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="S2" type="Node2D" parent="FinalItems"]
+
+[node name="Amulet" type="Sprite2D" parent="FinalItems/S2"]
+visible = false
+position = Vector2(802, 223.00002)
+scale = Vector2(0.21085949, 0.21085949)
+texture = ExtResource("7_ls135")
+
+[node name="Ball" type="Sprite2D" parent="FinalItems/S2"]
+visible = false
+position = Vector2(804.00006, 218.00003)
+scale = Vector2(0.36666667, 0.36666667)
+texture = ExtResource("8_0jg4w")
+
+[node name="Board" type="Sprite2D" parent="FinalItems/S2"]
+visible = false
+position = Vector2(805, 232)
+scale = Vector2(0.40000123, 0.40000123)
+texture = ExtResource("9_jr2i7")
+
+[node name="Dreamcatcher" type="Sprite2D" parent="FinalItems/S2"]
+visible = false
+position = Vector2(798.7645, 236.27055)
+scale = Vector2(0.38202792, 0.38202792)
+texture = ExtResource("10_sg02c")
+
+[node name="ShelfSprite" type="Sprite2D" parent="FinalItems/S2"]
 position = Vector2(804.0898, 288.30054)
 scale = Vector2(0.37044418, 0.37044418)
 texture = ExtResource("4_d6xrr")
 
-[node name="Shelf3" type="Sprite2D" parent="."]
+[node name="Shelf2" type="StaticBody2D" parent="FinalItems/S2" groups=["usage"]]
+position = Vector2(-6, -429)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S2/Shelf2"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="Area2" type="Area2D" parent="FinalItems/S2"]
+position = Vector2(-6, -429)
+script = ExtResource("12_0jg4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S2/Area2"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="S3" type="Node2D" parent="FinalItems"]
+
+[node name="Amulet" type="Sprite2D" parent="FinalItems/S3"]
+visible = false
+position = Vector2(1075, 455)
+scale = Vector2(0.2008595, 0.2008595)
+texture = ExtResource("7_ls135")
+
+[node name="Ball" type="Sprite2D" parent="FinalItems/S3"]
+visible = false
+position = Vector2(1085, 451)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("8_0jg4w")
+
+[node name="Board" type="Sprite2D" parent="FinalItems/S3"]
+visible = false
+position = Vector2(1080, 462.00003)
+scale = Vector2(0.40000123, 0.40000123)
+texture = ExtResource("9_jr2i7")
+
+[node name="Dreamcatcher" type="Sprite2D" parent="FinalItems/S3"]
+visible = false
+position = Vector2(1080, 465.99997)
+scale = Vector2(0.38202792, 0.38202792)
+texture = ExtResource("10_sg02c")
+
+[node name="ShelfSprite" type="Sprite2D" parent="FinalItems/S3"]
 position = Vector2(1080.0898, 518.3006)
 scale = Vector2(0.37044418, 0.37044418)
 texture = ExtResource("4_d6xrr")
 
-[node name="Shelf4" type="Sprite2D" parent="."]
+[node name="Shelf3" type="StaticBody2D" parent="FinalItems/S3" groups=["usage"]]
+position = Vector2(268, -204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S3/Shelf3"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="Area3" type="Area2D" parent="FinalItems/S3"]
+position = Vector2(268, -204)
+script = ExtResource("12_0jg4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S3/Area3"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="S4" type="Node2D" parent="FinalItems"]
+
+[node name="Amulet" type="Sprite2D" parent="FinalItems/S4"]
+visible = false
+position = Vector2(520, 457)
+scale = Vector2(0.18885955, 0.18885955)
+texture = ExtResource("7_ls135")
+
+[node name="Ball" type="Sprite2D" parent="FinalItems/S4"]
+visible = false
+position = Vector2(530, 446)
+scale = Vector2(0.38529435, 0.3852944)
+texture = ExtResource("8_0jg4w")
+
+[node name="Board" type="Sprite2D" parent="FinalItems/S4"]
+visible = false
+position = Vector2(527, 462)
+scale = Vector2(0.40000123, 0.40000123)
+texture = ExtResource("9_jr2i7")
+
+[node name="Dreamcatcher" type="Sprite2D" parent="FinalItems/S4"]
+visible = false
+position = Vector2(530, 465)
+scale = Vector2(0.38202792, 0.38202792)
+texture = ExtResource("10_sg02c")
+
+[node name="ShelfSprite" type="Sprite2D" parent="FinalItems/S4"]
 position = Vector2(529.08984, 517.30054)
 scale = Vector2(0.37044418, 0.37044418)
 texture = ExtResource("4_d6xrr")
+
+[node name="Shelf4" type="StaticBody2D" parent="FinalItems/S4" groups=["usage"]]
+position = Vector2(-281, -204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S4/Shelf4"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[node name="Area4" type="Area2D" parent="FinalItems/S4"]
+position = Vector2(-281, -204)
+script = ExtResource("12_0jg4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalItems/S4/Area4"]
+position = Vector2(810, 685)
+scale = Vector2(7.723277, 7.723277)
+shape = SubResource("CircleShape2D_ls135")
+
+[connection signal="input_event" from="FinalItems/S1/Area1" to="FinalItems/S1/Area1" method="_on_input_event"]
+[connection signal="input_event" from="FinalItems/S2/Area2" to="FinalItems/S2/Area2" method="_on_input_event"]
+[connection signal="input_event" from="FinalItems/S3/Area3" to="FinalItems/S3/Area3" method="_on_input_event"]
+[connection signal="input_event" from="FinalItems/S4/Area4" to="FinalItems/S4/Area4" method="_on_input_event"]

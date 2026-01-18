@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://r54jf3cnlvro"]
+
+[ext_resource type="Script" uid="uid://bq4dpk2y3c8ek" path="res://scripts/pickup_item.gd" id="1_283tp"]
+[ext_resource type="Texture2D" uid="uid://c382xp6bgpqh2" path="res://sprites/matches.png" id="2_283tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bxw6"]
+radius = 11.52418
+
+[node name="Matches" type="Node2D"]
+script = ExtResource("1_283tp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(5.007729, -3.3842504)
+shape = SubResource("CircleShape2D_8bxw6")
+
+[node name="Matches" type="Sprite2D" parent="."]
+scale = Vector2(0.15829216, 0.15829216)
+texture = ExtResource("2_283tp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

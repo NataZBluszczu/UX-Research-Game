@@ -8,7 +8,8 @@ var ITEM_SCENES := {
 	"Ball": preload("res://prefabs/Ball.tscn"),
 	"Board": preload("res://prefabs/Board.tscn"),
 	"Dreamcatcher": preload("res://prefabs/Dreamcatcher.tscn"),
-	"Amulet": preload("res://prefabs/Amulet.tscn")
+	"Amulet": preload("res://prefabs/Amulet.tscn"),
+	"Matches": preload("res://prefabs/Matches.tscn")
 }
 
 func _ready():
