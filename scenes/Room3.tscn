@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=3 format=3 uid="uid://vcu5l0fowgd3"]
+
+[ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
+[ext_resource type="Texture2D" uid="uid://cxlrvcktolho6" path="res://sprites/room1/background3.jpg" id="2_gn08f"]
 
 [node name="Room3" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(810, 540)
+texture = ExtResource("1_gn08f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(809.8987, 539.76184)
+scale = Vector2(1.5822289, 1.5727459)
+texture = ExtResource("2_gn08f")

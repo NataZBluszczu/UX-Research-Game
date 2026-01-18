@@ -26,3 +26,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			GameManager.selected_item = null
 			pulse_animation()
 			InventoryManager.remove_item(selected_item.name)
+		elif selected_item and GameManager.selected_vial:
+			GameManager.add_vial_to_cauldron(selected_item.name)
+			pulse_animation()
+			#ANIMACJA DLA VIAL 

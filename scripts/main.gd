@@ -10,7 +10,9 @@ func _ready() -> void:
 
 func _update_rooms_visibility() -> void:
 	for i in rooms.size():
-		rooms[i].visible = (i == current_index)
+		var is_current = (i == current_index)
+		rooms[i].visible = is_current
+		rooms[i].process_mode = Node.PROCESS_MODE_DISABLED if not is_current else Node.PROCESS_MODE_INHERIT
 		
 func _go_left() -> void:
 	current_index -= 1
