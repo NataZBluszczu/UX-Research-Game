@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var cauldron_sprite: Sprite2D = $CauldronSprite
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -13,8 +14,9 @@ func _process(delta: float) -> void:
 
 func pulse_animation():
 	var tween = get_tree().create_tween()
-	tween.tween_property(cauldron_sprite, "scale", Vector2(1.3, 1.3), 0.2)
-	tween.tween_property(cauldron_sprite, "scale", Vector2(1, 1), 0.3)
+	var base_scale: Vector2 = cauldron_sprite.scale
+	tween.tween_property(cauldron_sprite, "scale", Vector2(1.05, 1.05), 0.2)
+	tween.tween_property(cauldron_sprite, "scale", Vector2(base_scale.x, base_scale.y), 0.3)
 	
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

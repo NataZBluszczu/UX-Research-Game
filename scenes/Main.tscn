@@ -24,9 +24,9 @@ script = ExtResource("1_nxtc6")
 [node name="UI" type="Node2D" parent="."]
 
 [node name="RightArrow" type="TextureButton" parent="UI"]
-offset_left = 1520.0
+offset_left = 1507.0
 offset_top = 496.0
-offset_right = 1570.0
+offset_right = 1557.0
 offset_bottom = 588.0
 texture_normal = ExtResource("3_0bbpv")
 

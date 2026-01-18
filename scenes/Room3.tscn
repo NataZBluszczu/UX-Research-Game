@@ -1,15 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=8 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
-[ext_resource type="Texture2D" uid="uid://cxlrvcktolho6" path="res://sprites/room1/background3.jpg" id="2_gn08f"]
+[ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
+[ext_resource type="Texture2D" uid="uid://dgh01wjlsxt6e" path="res://sprites/room3/Gemini_Generated_Image_lk1hyhlk1hyhlk1h (1).png" id="2_dw1qw"]
+[ext_resource type="Texture2D" uid="uid://c8h3bk1u6so5o" path="res://sprites/room3/Gemini_Generated_Image_yngw65yngw65yngw (1).png" id="2_gn08f"]
+[ext_resource type="Texture2D" uid="uid://dsse3npw0nwiq" path="res://sprites/room3/circle.png" id="3_5hlaq"]
+[ext_resource type="Texture2D" uid="uid://lbme7cqd6yc6" path="res://sprites/room3/shelf.png" id="4_d6xrr"]
+[ext_resource type="Texture2D" uid="uid://dlihnfmmjh4oh" path="res://sprites/room3/youescaped.png" id="5_784tl"]
 
 [node name="Room3" type="Node2D"]
+script = ExtResource("1_s61je")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(810, 540)
 texture = ExtResource("1_gn08f")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(809.8987, 539.76184)
-scale = Vector2(1.5822289, 1.5727459)
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(809.84454, 539.86884)
+scale = Vector2(1.2983259, 1.2983922)
 texture = ExtResource("2_gn08f")
+
+[node name="backgrounddoor" type="Sprite2D" parent="."]
+position = Vector2(810, 540)
+scale = Vector2(1.2980769, 1.2980769)
+texture = ExtResource("2_dw1qw")
+
+[node name="Youescaped" type="Sprite2D" parent="."]
+position = Vector2(822.00006, 88)
+scale = Vector2(1.3144331, 1.314433)
+texture = ExtResource("5_784tl")
+
+[node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(803.0897, 490.3006)
+scale = Vector2(0.6277345, 0.62773436)
+texture = ExtResource("3_5hlaq")
+
+[node name="Shelf" type="Sprite2D" parent="."]
+position = Vector2(809.0898, 710.30054)
+scale = Vector2(0.37044418, 0.37044418)
+texture = ExtResource("4_d6xrr")
+
+[node name="Shelf2" type="Sprite2D" parent="."]
+position = Vector2(804.0898, 288.30054)
+scale = Vector2(0.37044418, 0.37044418)
+texture = ExtResource("4_d6xrr")
+
+[node name="Shelf3" type="Sprite2D" parent="."]
+position = Vector2(1080.0898, 518.3006)
+scale = Vector2(0.37044418, 0.37044418)
+texture = ExtResource("4_d6xrr")
+
+[node name="Shelf4" type="Sprite2D" parent="."]
+position = Vector2(529.08984, 517.30054)
+scale = Vector2(0.37044418, 0.37044418)
+texture = ExtResource("4_d6xrr")

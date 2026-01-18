@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cdh16qlqmnd8d" path="res://prefabs/Dreamcatcher.tscn" id="3_bj4ne"]
 [ext_resource type="Texture2D" uid="uid://p1b1agjk5t0c" path="res://sprites/room1/Gemini_Generated_Image_pqmr3rpqmr3rpqmr.png" id="3_yceeu"]
 [ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="4_xhlaj"]
-[ext_resource type="Texture2D" uid="uid://dxf3a1ow8yis5" path="res://sprites/kocioł.png" id="5_xhlaj"]
 [ext_resource type="Script" uid="uid://djhqqcuyw2w4w" path="res://scripts/cauldron.gd" id="6_hwyyj"]
+[ext_resource type="Texture2D" uid="uid://dihkyrfh0rbtj" path="res://sprites/room1/cauldron2.png" id="6_yceeu"]
 [ext_resource type="PackedScene" uid="uid://e8yhmohow3px" path="res://prefabs/Amulet.tscn" id="7_bc387"]
 [ext_resource type="Texture2D" uid="uid://hq0bsmlo7ijr" path="res://sprites/room1/bookshelf.png" id="9_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://cl0rw2ipsqc7v" path="res://sprites/room1/blue.png" id="10_bju5w"]
@@ -28,7 +28,7 @@ position = Vector2(810, 540)
 texture = ExtResource("1_um1ds")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(810.00006, 540)
+position = Vector2(810, 540)
 scale = Vector2(1.2816455, 1.2735848)
 texture = ExtResource("3_yceeu")
 
@@ -42,8 +42,9 @@ position = Vector2(16, 53)
 script = ExtResource("6_hwyyj")
 
 [node name="CauldronSprite" type="Sprite2D" parent="Cauldron"]
-position = Vector2(932, 695)
-texture = ExtResource("5_xhlaj")
+position = Vector2(938, 700)
+scale = Vector2(0.85910666, 0.8591066)
+texture = ExtResource("6_yceeu")
 
 [node name="CauldronBody" type="StaticBody2D" parent="Cauldron" groups=["usage"]]
 
