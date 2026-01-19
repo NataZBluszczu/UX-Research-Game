@@ -7,7 +7,7 @@ var body_ref
 var offset: Vector2
 var initialPos : Vector2
 var is_selected = false
-
+var above_candle = false
 var above_shelf = false
 
 func _process(delta):
@@ -48,7 +48,12 @@ func _process(delta):
 							tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 					else:
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-						
+				if above_candle:
+					if InventoryManager.has_item(name):
+						var candle_nr = body_ref.name.right(1)
+						if GameManager.correct_light_item(name, candle_nr) == false:
+							queue_free()
+						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 						
 	else:
 		if clickable:
@@ -88,6 +93,9 @@ func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 		if body.name.contains("Shelf"):
 			above_shelf = true
 			body_ref = body
+		if body.name.contains("Candle") and name == "Matches":
+			above_candle = true
+			body_ref = body
 	if body.is_in_group('dropable'):
 		is_inside_dropable = true
 		body.modulate = Color(Color.REBECCA_PURPLE, 1)
@@ -95,6 +103,7 @@ func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 
 func _on_area_2d_body_exited(body) -> void:
 	above_shelf = false
+	above_candle = false
 	if body.is_in_group('dropable') and body_ref == body:
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)

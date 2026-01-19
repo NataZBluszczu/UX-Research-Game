@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2dq226a7wlrv"]
+[gd_scene load_steps=20 format=3 uid="uid://d2dq226a7wlrv"]
 
 [ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cl0rw2ipsqc7v" path="res://sprites/room1/blue.png" id="10_bju5w"]
 [ext_resource type="Script" uid="uid://dfvrf3xd00ofe" path="res://scripts/vial.gd" id="10_tx616"]
 [ext_resource type="Texture2D" uid="uid://bpvfy7ymjgghd" path="res://sprites/room1/violet.png" id="11_t64ac"]
+[ext_resource type="Texture2D" uid="uid://dgi7d5kr3dirp" path="res://sprites/room1/pink.png" id="14_vgobq"]
+[ext_resource type="Texture2D" uid="uid://brngvxokpuqo3" path="res://sprites/room1/yellow.png" id="15_poay4"]
+[ext_resource type="Texture2D" uid="uid://ebrfxvonq4xm" path="res://sprites/room1/red.png" id="16_stay0"]
+[ext_resource type="Texture2D" uid="uid://duicg3wctom3v" path="res://sprites/room1/green.png" id="17_gu8eb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj4ne"]
 
@@ -73,10 +77,10 @@ position = Vector2(952, 473)
 position = Vector2(1260, 789)
 
 [node name="Purple" type="Node2D" parent="."]
-position = Vector2(420.75, 572.3124)
+position = Vector2(297, 331)
 script = ExtResource("10_tx616")
 
-[node name="Blue" type="Sprite2D" parent="Purple"]
+[node name="Pink" type="Sprite2D" parent="Purple"]
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("11_t64ac")
 
@@ -88,7 +92,7 @@ scale = Vector2(4.255, 4.255)
 shape = SubResource("CapsuleShape2D_t64ac")
 
 [node name="Blue" type="Node2D" parent="."]
-position = Vector2(297.75, 572.3124)
+position = Vector2(422, 331)
 script = ExtResource("10_tx616")
 
 [node name="Blue" type="Sprite2D" parent="Blue"]
@@ -98,6 +102,66 @@ texture = ExtResource("10_bju5w")
 [node name="Area2D" type="Area2D" parent="Blue"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blue/Area2D"]
+position = Vector2(1.7881393e-07, 4.172325e-07)
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_t64ac")
+
+[node name="Pink" type="Node2D" parent="."]
+position = Vector2(535, 332)
+script = ExtResource("10_tx616")
+
+[node name="Pink" type="Sprite2D" parent="Pink"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("14_vgobq")
+
+[node name="Area2D" type="Area2D" parent="Pink"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pink/Area2D"]
+position = Vector2(1.7881393e-07, 4.172325e-07)
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_t64ac")
+
+[node name="Yellow" type="Node2D" parent="."]
+position = Vector2(293, 569)
+script = ExtResource("10_tx616")
+
+[node name="Yellow" type="Sprite2D" parent="Yellow"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("15_poay4")
+
+[node name="Area2D" type="Area2D" parent="Yellow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow/Area2D"]
+position = Vector2(1.7881393e-07, 4.172325e-07)
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_t64ac")
+
+[node name="Red" type="Node2D" parent="."]
+position = Vector2(421, 571)
+script = ExtResource("10_tx616")
+
+[node name="Red" type="Sprite2D" parent="Red"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("16_stay0")
+
+[node name="Area2D" type="Area2D" parent="Red"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Red/Area2D"]
+position = Vector2(1.7881393e-07, 4.172325e-07)
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_t64ac")
+
+[node name="Green" type="Node2D" parent="."]
+position = Vector2(538, 571)
+script = ExtResource("10_tx616")
+
+[node name="Green" type="Sprite2D" parent="Green"]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("17_gu8eb")
+
+[node name="Area2D" type="Area2D" parent="Green"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Green/Area2D"]
 position = Vector2(1.7881393e-07, 4.172325e-07)
 scale = Vector2(4.255, 4.255)
 shape = SubResource("CapsuleShape2D_t64ac")
@@ -112,3 +176,19 @@ shape = SubResource("CapsuleShape2D_t64ac")
 [connection signal="body_exited" from="Blue/Area2D" to="Blue" method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Blue/Area2D" to="Blue" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Blue/Area2D" to="Blue" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Pink/Area2D" to="Pink" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Pink/Area2D" to="Pink" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Pink/Area2D" to="Pink" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Pink/Area2D" to="Pink" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Yellow/Area2D" to="Yellow" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Yellow/Area2D" to="Yellow" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Yellow/Area2D" to="Yellow" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Yellow/Area2D" to="Yellow" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Red/Area2D" to="Red" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Red/Area2D" to="Red" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Red/Area2D" to="Red" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Red/Area2D" to="Red" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Green/Area2D" to="Green" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Green/Area2D" to="Green" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Green/Area2D" to="Green" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Green/Area2D" to="Green" method="_on_area_2d_mouse_exited"]

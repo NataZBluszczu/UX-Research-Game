@@ -16,7 +16,7 @@ func _input(event):
 			is_drag_mode = !is_drag_mode
 			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
 		if event.is_action_pressed("2"):
-			print(finish_items_collected)
+			print(candles_lighten)
 
 func _process(delta: float) -> void:
 	if is_drag_mode:
@@ -30,7 +30,7 @@ var collected_items = []
 var all_items_added = false
 
 var added_vials = []
-var pattern = ["Blue","Blue","Blue","Purple","Purple"]
+var pattern = ["Red","Red","Green","Green","Blue","Blue","Blue"]
 
 signal spawn_amulet
 signal vial_quest_finished
@@ -72,4 +72,23 @@ func correct_finish_item(item_name: String, shelf_nr: String) -> bool:
 	else:
 		return false
 		
-	
+		
+var candles_lighten = [0,0,0]
+var light_quest_finished = false
+signal lighted_candle(candle_nr: String)
+
+func correct_light_item(item_name: String, candle_nr: String) -> bool:
+	if item_name == "Matches":
+		var candle_int = int(candle_nr)
+		if candles_lighten[candle_int - 1] == 0:
+			candles_lighten[candle_int - 1] = 1
+			lighted_candle.emit(candle_nr)
+			if not 0 in candles_lighten:
+				light_quest_finished = true
+				InventoryManager.remove_item(item_name)
+				return false
+			return true
+		else:
+			return true
+	return true
+		
