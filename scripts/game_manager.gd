@@ -1,8 +1,13 @@
 extends Node
 
+var input_locked := false
+
 var selected_item = null
 var selected_vial = null
 var is_drag_mode = false  
+
+func _on_anim_finished() -> void:
+	input_locked = false
 
 func _ready() -> void:
 	DisplayServer.window_set_size(Vector2i(1280,720))
@@ -92,3 +97,17 @@ func correct_light_item(item_name: String, candle_nr: String) -> bool:
 			return true
 	return true
 		
+signal gem_is_placed(color: String)
+signal all_gems_placed
+var gems_found = []
+func gem_placed(gem_color: String) -> bool:
+	if gem_color not in gems_found:
+		gems_found.append(gem_color)
+		gem_is_placed.emit(gem_color)
+		InventoryManager.remove_item(gem_color + "Gem")
+		if gems_found.size() == 4:
+			all_gems_placed.emit()
+		return true
+	else:
+		return false
+	

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c424jss0kf4q0"]
+
+[ext_resource type="Script" uid="uid://bq4dpk2y3c8ek" path="res://scripts/pickup_item.gd" id="1_vwfm2"]
+[ext_resource type="Texture2D" uid="uid://bv6p0q71tq5yp" path="res://sprites/klejonty/orange.png" id="2_vwfm2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21mh2"]
+radius = 9.823678
+height = 28.715364
+
+[node name="OrangeGem" type="Node2D"]
+script = ExtResource("1_vwfm2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.9802322e-08, 2)
+scale = Vector2(3.97, 3.97)
+shape = SubResource("CapsuleShape2D_21mh2")
+
+[node name="OrangeGem" type="Sprite2D" parent="."]
+position = Vector2(1, 1.000001)
+scale = Vector2(0.3586587, 0.35865873)
+texture = ExtResource("2_vwfm2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

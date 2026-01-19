@@ -13,14 +13,18 @@ func _process(delta: float) -> void:
 	pass
 
 func pulse_animation():
+	GameManager.input_locked = true
 	var tween = get_tree().create_tween()
 	var base_scale: Vector2 = cauldron_sprite.scale
 	tween.tween_property(cauldron_sprite, "scale", Vector2(1.05, 1.05), 0.2)
 	tween.tween_property(cauldron_sprite, "scale", Vector2(base_scale.x, base_scale.y), 0.3)
+	tween.finished.connect(GameManager._on_anim_finished)
 	
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
+		if GameManager.input_locked:
+			return
 		var selected_item = GameManager.selected_item
 		#if selected_item and selected_item.name in GameManager.cauldron_items:
 			#GameManager.add_to_cauldron(selected_item.name)

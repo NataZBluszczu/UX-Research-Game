@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2dq226a7wlrv"]
+[gd_scene load_steps=19 format=3 uid="uid://d2dq226a7wlrv"]
 
 [ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
-[ext_resource type="PackedScene" uid="uid://bb2f4q4tntslk" path="res://prefabs/Board.tscn" id="3_7sa2y"]
 [ext_resource type="PackedScene" uid="uid://cdh16qlqmnd8d" path="res://prefabs/Dreamcatcher.tscn" id="3_bj4ne"]
 [ext_resource type="Texture2D" uid="uid://p1b1agjk5t0c" path="res://sprites/room1/Gemini_Generated_Image_pqmr3rpqmr3rpqmr.png" id="3_yceeu"]
 [ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="4_xhlaj"]
@@ -72,9 +71,6 @@ position = Vector2(538, 839)
 
 [node name="Amulet" parent="." instance=ExtResource("7_bc387")]
 position = Vector2(952, 473)
-
-[node name="Board" parent="." instance=ExtResource("3_7sa2y")]
-position = Vector2(1260, 789)
 
 [node name="Purple" type="Node2D" parent="."]
 position = Vector2(297, 331)
