@@ -16,6 +16,8 @@ func _ready() -> void:
 	GameManager.vial_quest_finished.connect(_on_vial_quest_finished)
 
 func _process(delta):
+	if GameManager.input_locked:
+		return
 	if GameManager.is_drag_mode == true:
 		if draggable:
 			if Input.is_action_just_pressed("click"):
@@ -30,7 +32,10 @@ func _process(delta):
 				if above_cauldron:
 					GameManager.add_vial_to_cauldron(name)
 					body_ref.get_parent().pulse_animation()
-				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)	
+				GameManager.input_locked = true
+				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				GameManager.input_locked = false
 	else:
 		if clickable:
 			if Input.is_action_just_pressed("click"):

@@ -217,7 +217,6 @@ scale = Vector2(7.723277, 7.723277)
 shape = SubResource("RectangleShape2D_x5evy")
 
 [node name="Painting" type="Node2D" parent="."]
-visible = false
 
 [node name="Obraz" type="Sprite2D" parent="Painting"]
 position = Vector2(603, 194.99998)
