@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=15 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
 [ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csh24g40apyuh" path="res://sprites/board.png" id="9_jr2i7"]
 [ext_resource type="Texture2D" uid="uid://cvs1f4qji3k7r" path="res://sprites/dreamcatcher.png" id="10_sg02c"]
 [ext_resource type="Script" uid="uid://tx2e27kvmww0" path="res://scripts/shelf.gd" id="12_0jg4w"]
+[ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="13_jr2i7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls135"]
 
@@ -233,6 +234,9 @@ script = ExtResource("12_0jg4w")
 position = Vector2(810, 685)
 scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_ls135")
+
+[node name="Matches" parent="." instance=ExtResource("13_jr2i7")]
+position = Vector2(365, 852)
 
 [connection signal="input_event" from="FinalItems/S1/Area1" to="FinalItems/S1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S2/Area2" to="FinalItems/S2/Area2" method="_on_input_event"]

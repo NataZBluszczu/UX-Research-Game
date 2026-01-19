@@ -1,17 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd8a7nenn56ff"]
+[gd_scene load_steps=18 format=3 uid="uid://dd8a7nenn56ff"]
 
 [ext_resource type="Script" uid="uid://be55erxuoxxa1" path="res://scripts/room_2.gd" id="1_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_uq8dp"]
 [ext_resource type="Texture2D" uid="uid://dv0k8fgcxjs0x" path="res://sprites/room2/Gemini_Generated_Image_kpaq7mkpaq7mkpaq.png" id="2_uq8dp"]
-[ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="3_oe7il"]
 [ext_resource type="Texture2D" uid="uid://bgabmrg61q0cm" path="res://sprites/room2/swiecznik.png" id="4_4tgmk"]
 [ext_resource type="Texture2D" uid="uid://670v42c5ch6t" path="res://sprites/UV.png" id="5_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://dbb4lfa4rwmmg" path="res://sprites/room2/fire.png" id="6_sqj6n"]
 [ext_resource type="Texture2D" uid="uid://d37m44qssf7on" path="res://sprites/room2/2.png" id="8_slqss"]
 [ext_resource type="Script" uid="uid://cn0qwjmhqnil4" path="res://scripts/candle.gd" id="9_slqss"]
 [ext_resource type="Texture2D" uid="uid://byx6yfv0gute" path="res://sprites/room2/3.png" id="10_4ss6k"]
+[ext_resource type="Texture2D" uid="uid://csidggp8cfrdb" path="res://sprites/klejonty/miejsce.png" id="10_slqss"]
+[ext_resource type="Texture2D" uid="uid://ufkg34wi6kco" path="res://sprites/klejonty/obraz.png" id="11_570ry"]
+[ext_resource type="Texture2D" uid="uid://ciht8gbjsvaur" path="res://sprites/klejonty/green.png" id="12_trlsk"]
+[ext_resource type="Texture2D" uid="uid://bv6p0q71tq5yp" path="res://sprites/klejonty/orange.png" id="13_xdxtg"]
+[ext_resource type="Texture2D" uid="uid://br56q0wtd4pww" path="res://sprites/klejonty/yellow.png" id="14_hyksi"]
+[ext_resource type="Texture2D" uid="uid://bupi1s1xdu81c" path="res://sprites/klejonty/purple.png" id="15_7hdcm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83skf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ss6k"]
+size = Vector2(472, 239.5)
 
 [node name="Room2" type="Node2D"]
 script = ExtResource("1_5ujgq")
@@ -25,10 +33,8 @@ position = Vector2(809.8446, 539.86884)
 scale = Vector2(1.2983259, 1.2983922)
 texture = ExtResource("2_uq8dp")
 
-[node name="Matches" parent="." instance=ExtResource("3_oe7il")]
-position = Vector2(609, 427)
-
 [node name="Swiecznik" type="Node2D" parent="."]
+position = Vector2(27, 2)
 
 [node name="Swiecznik" type="Sprite2D" parent="Swiecznik"]
 position = Vector2(1052.0001, 634)
@@ -143,6 +149,46 @@ position = Vector2(810, 685)
 scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_83skf")
 
+[node name="Miejsce" type="Sprite2D" parent="."]
+position = Vector2(596.00006, 355)
+scale = Vector2(0.24342112, 0.24342108)
+texture = ExtResource("10_slqss")
+
+[node name="Green" type="Sprite2D" parent="Miejsce"]
+position = Vector2(-184.86499, 8.216431)
+scale = Vector2(1.591467, 1.5914674)
+texture = ExtResource("12_trlsk")
+
+[node name="Orange" type="Sprite2D" parent="Miejsce"]
+position = Vector2(-620.32434, 12.324341)
+scale = Vector2(1.6157205, 1.6157209)
+texture = ExtResource("13_xdxtg")
+
+[node name="Yellow" type="Sprite2D" parent="Miejsce"]
+position = Vector2(217.72949, 8.216431)
+scale = Vector2(1.5987967, 1.5987965)
+texture = ExtResource("14_hyksi")
+
+[node name="Purple" type="Sprite2D" parent="Miejsce"]
+position = Vector2(628.5398, 8.216187)
+scale = Vector2(1.5831563, 1.5831567)
+texture = ExtResource("15_7hdcm")
+
+[node name="Painting" type="Node2D" parent="."]
+
+[node name="Obraz" type="Sprite2D" parent="Painting"]
+position = Vector2(603, 194.99998)
+scale = Vector2(0.74181366, 0.74181366)
+texture = ExtResource("11_570ry")
+offset = Vector2(-8.088257, 210.29541)
+
+[node name="Area2D" type="Area2D" parent="Painting"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Painting/Area2D"]
+position = Vector2(599, 389.25)
+shape = SubResource("RectangleShape2D_4ss6k")
+
 [connection signal="input_event" from="Swiecznik/Candle1/Area1" to="Swiecznik/Candle1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="Swiecznik/Candle2/Area2" to="Swiecznik/Candle2/Area2" method="_on_input_event"]
 [connection signal="input_event" from="Swiecznik/Candle3/Area3" to="Swiecznik/Candle3/Area3" method="_on_input_event"]
+[connection signal="input_event" from="Painting/Area2D" to="." method="_on_painting_input_event"]
