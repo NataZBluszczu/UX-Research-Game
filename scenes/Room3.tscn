@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=17 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
 [ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
-[ext_resource type="Texture2D" uid="uid://dgh01wjlsxt6e" path="res://sprites/room3/Gemini_Generated_Image_lk1hyhlk1hyhlk1h (1).png" id="2_dw1qw"]
-[ext_resource type="Texture2D" uid="uid://c8h3bk1u6so5o" path="res://sprites/room3/Gemini_Generated_Image_yngw65yngw65yngw (1).png" id="2_gn08f"]
+[ext_resource type="Texture2D" uid="uid://cxlrvcktolho6" path="res://sprites/room1/background3.jpg" id="3_4btv5"]
 [ext_resource type="Texture2D" uid="uid://dsse3npw0nwiq" path="res://sprites/room3/circle.png" id="3_5hlaq"]
+[ext_resource type="Texture2D" uid="uid://wxlsu04i7icd" path="res://sprites/room3/doors.jpg" id="4_2wjaf"]
 [ext_resource type="Texture2D" uid="uid://lbme7cqd6yc6" path="res://sprites/room3/shelf.png" id="4_d6xrr"]
 [ext_resource type="Texture2D" uid="uid://dlihnfmmjh4oh" path="res://sprites/room3/youescaped.png" id="5_784tl"]
 [ext_resource type="Texture2D" uid="uid://cd3xall304fep" path="res://sprites/amulet.png" id="7_ls135"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cvs1f4qji3k7r" path="res://sprites/dreamcatcher.png" id="10_sg02c"]
 [ext_resource type="Script" uid="uid://tx2e27kvmww0" path="res://scripts/shelf.gd" id="12_0jg4w"]
 [ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="13_jr2i7"]
+[ext_resource type="Texture2D" uid="uid://chj3wiffqyq0k" path="res://sprites/deko2.png" id="14_4btv5"]
+[ext_resource type="PackedScene" uid="uid://celleqw678uui" path="res://prefabs/PurpleGem.tscn" id="15_2wjaf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls135"]
 
@@ -26,12 +28,12 @@ texture = ExtResource("1_gn08f")
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(809.84454, 539.86884)
 scale = Vector2(1.2983259, 1.2983922)
-texture = ExtResource("2_gn08f")
+texture = ExtResource("3_4btv5")
 
 [node name="backgrounddoor" type="Sprite2D" parent="."]
 position = Vector2(810, 540)
 scale = Vector2(1.2980769, 1.2980769)
-texture = ExtResource("2_dw1qw")
+texture = ExtResource("4_2wjaf")
 
 [node name="Youescaped" type="Sprite2D" parent="."]
 position = Vector2(822.00006, 88)
@@ -236,7 +238,15 @@ scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_ls135")
 
 [node name="Matches" parent="." instance=ExtResource("13_jr2i7")]
-position = Vector2(365, 852)
+position = Vector2(1248, 852)
+
+[node name="Deko2" type="Sprite2D" parent="."]
+position = Vector2(229.00002, 779.00006)
+scale = Vector2(0.6348829, 0.6348829)
+texture = ExtResource("14_4btv5")
+
+[node name="PurpleGem" parent="." instance=ExtResource("15_2wjaf")]
+position = Vector2(131, 665)
 
 [connection signal="input_event" from="FinalItems/S1/Area1" to="FinalItems/S1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S2/Area2" to="FinalItems/S2/Area2" method="_on_input_event"]

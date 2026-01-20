@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dd8a7nenn56ff"]
+[gd_scene load_steps=24 format=3 uid="uid://dd8a7nenn56ff"]
 
 [ext_resource type="Script" uid="uid://be55erxuoxxa1" path="res://scripts/room_2.gd" id="1_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_uq8dp"]
-[ext_resource type="Texture2D" uid="uid://dv0k8fgcxjs0x" path="res://sprites/room2/Gemini_Generated_Image_kpaq7mkpaq7mkpaq.png" id="2_uq8dp"]
+[ext_resource type="Texture2D" uid="uid://c3hj8ao3bp2bm" path="res://sprites/room1/background2.jpg" id="3_46tr2"]
 [ext_resource type="Texture2D" uid="uid://bgabmrg61q0cm" path="res://sprites/room2/swiecznik.png" id="4_4tgmk"]
 [ext_resource type="Texture2D" uid="uid://670v42c5ch6t" path="res://sprites/UV.png" id="5_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://dbb4lfa4rwmmg" path="res://sprites/room2/fire.png" id="6_sqj6n"]
@@ -18,9 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://br56q0wtd4pww" path="res://sprites/klejonty/yellow.png" id="14_hyksi"]
 [ext_resource type="Texture2D" uid="uid://bupi1s1xdu81c" path="res://sprites/klejonty/purple.png" id="15_7hdcm"]
 [ext_resource type="PackedScene" uid="uid://ciepr2ny302l0" path="res://prefabs/GreenGem.tscn" id="16_xdxtg"]
-[ext_resource type="PackedScene" uid="uid://c424jss0kf4q0" path="res://prefabs/OrangeGem.tscn" id="17_46tr2"]
-[ext_resource type="PackedScene" uid="uid://celleqw678uui" path="res://prefabs/PurpleGem.tscn" id="18_7t0uk"]
-[ext_resource type="PackedScene" uid="uid://b2bwtwqn83gey" path="res://prefabs/YellowGem.tscn" id="19_djyqn"]
+[ext_resource type="Texture2D" uid="uid://da5rlcim4c7lc" path="res://sprites/deko1.png" id="19_46tr2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83skf"]
 
@@ -43,7 +41,7 @@ texture = ExtResource("1_uq8dp")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(809.8446, 539.86884)
 scale = Vector2(1.2983259, 1.2983922)
-texture = ExtResource("2_uq8dp")
+texture = ExtResource("3_46tr2")
 
 [node name="Swiecznik" type="Node2D" parent="."]
 position = Vector2(27, 2)
@@ -231,16 +229,12 @@ position = Vector2(599, 389.25)
 shape = SubResource("RectangleShape2D_4ss6k")
 
 [node name="GreenGem" parent="." instance=ExtResource("16_xdxtg")]
-position = Vector2(629, 649)
+position = Vector2(170, 846)
 
-[node name="OrangeGem" parent="." instance=ExtResource("17_46tr2")]
-position = Vector2(1280, 952)
-
-[node name="PurpleGem" parent="." instance=ExtResource("18_7t0uk")]
-position = Vector2(431, 909)
-
-[node name="YellowGem" parent="." instance=ExtResource("19_djyqn")]
-position = Vector2(845, 868)
+[node name="Deko1" type="Sprite2D" parent="."]
+position = Vector2(192, 690.4286)
+scale = Vector2(0.7276786, 0.7276786)
+texture = ExtResource("19_46tr2")
 
 [connection signal="input_event" from="Swiecznik/Candle1/Area1" to="Swiecznik/Candle1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="Swiecznik/Candle2/Area2" to="Swiecznik/Candle2/Area2" method="_on_input_event"]

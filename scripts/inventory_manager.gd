@@ -16,7 +16,7 @@ func get_first_free_slot() -> int:
 	for i in range(items.size()):
 		if items[i] == null:
 			return i + 1
-	return 0
+	return 1000
 		
 		
 func add_item_index(item_id: String, slot_index: int) -> void:

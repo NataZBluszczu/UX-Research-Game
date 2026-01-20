@@ -12,51 +12,33 @@ var above_shelf = false
 var above_gems = false
 
 func _process(delta):
-	if GameManager.input_locked:
-		return
 	if GameManager.is_drag_mode == true:
 		if draggable:
 			if Input.is_action_just_pressed("click"):
-				print("CLICK ON:", name, " global:", global_position, " mouse:", get_global_mouse_position())
 				initialPos = global_position
 				offset = get_global_mouse_position() - global_position
-				print("OFFSET:", offset)
 				global.is_dragging = true
 			if Input.is_action_pressed("click"):
-				if GameManager.input_locked:
-					return
 				global_position = get_global_mouse_position() - offset
 			elif Input.is_action_just_released("click"):
-				if GameManager.input_locked:
-					return
 				global.is_dragging = false
 				var tween = get_tree().create_tween()
 				if is_inside_dropable:
 					var slot_index = body_ref.get_slot_index()
 					if InventoryManager.is_slot_free(slot_index):
 						if InventoryManager.has_item(name):
-							GameManager.input_locked = true
 							tween.tween_property(self,"position",body_ref.global_position,0.2).set_ease(Tween.EASE_OUT)
 							await tween.finished
-							GameManager.input_locked = false
 							InventoryManager.replace_item(name, slot_index)
 						else:
-							GameManager.input_locked = true
 							tween.tween_property(self,"position",body_ref.global_position,0.2).set_ease(Tween.EASE_OUT)
 							await tween.finished
-							GameManager.input_locked = false
 							InventoryManager.add_item_index(name, slot_index)
 							queue_free()
 					else:
-						GameManager.input_locked = true
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-						await tween.finished
-						GameManager.input_locked = false
 				else:
-					GameManager.input_locked = true
 					tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-					await tween.finished
-					GameManager.input_locked = false
 				if above_shelf:
 					if InventoryManager.has_item(name):
 						var shelf_nr = body_ref.name.right(1)
@@ -64,24 +46,15 @@ func _process(delta):
 							InventoryManager.remove_item(name)
 							queue_free()
 						else:
-							GameManager.input_locked = true
 							tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-							await tween.finished
-							GameManager.input_locked = false
 					else:
-						GameManager.input_locked = true
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-						await tween.finished
-						GameManager.input_locked = false
 				if above_candle:
 					if InventoryManager.has_item(name):
 						var candle_nr = body_ref.name.right(1)
 						if GameManager.correct_light_item(name, candle_nr) == false:
 							queue_free()
-						GameManager.input_locked = true
 						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-						await tween.finished
-						GameManager.input_locked = false
 				if above_gems:
 					if InventoryManager.has_item(name):
 						if name == "GreenGem" or name == "OrangeGem" or name == "PurpleGem" or name == "YellowGem":
@@ -89,32 +62,23 @@ func _process(delta):
 							if GameManager.gem_placed(gem_color):
 								queue_free()
 							else:
-								GameManager.input_locked = true
 								tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-								await tween.finished
-								GameManager.input_locked = false
 						else:
-							GameManager.input_locked = true
 							tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
-							await tween.finished
-							GameManager.input_locked = false
 	else:
 		if clickable:
 			if Input.is_action_just_pressed("click"):
-				if GameManager.input_locked:
-					return
 				if InventoryManager.has_item(name):
 					toggle_selected()
 				else:
 					var slot_index = InventoryManager.get_first_free_slot()
+					if slot_index == 1000:
+						return
 					var slot_name = "InventorySlot" + str(slot_index)
 					var slot = get_tree().get_root().find_child(slot_name, true, false)
 					var tween = get_tree().create_tween()
-					GameManager.input_locked = true
 					tween.tween_property(self,"global_position",slot.global_position,0.2).set_ease(Tween.EASE_OUT)
 					await tween.finished
-					GameManager.input_locked = false
-
 					InventoryManager.add_item(name)
 					queue_free()
 	

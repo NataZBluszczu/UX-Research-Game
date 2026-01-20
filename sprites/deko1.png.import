@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p1b1agjk5t0c"
-valid=false
+uid="uid://da5rlcim4c7lc"
+path="res://.godot/imported/deko1.png-454461491c6bd118cf8874d4c9d4defc.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/room1/Gemini_Generated_Image_pqmr3rpqmr3rpqmr.png"
+source_file="res://sprites/deko1.png"
+dest_files=["res://.godot/imported/deko1.png-454461491c6bd118cf8874d4c9d4defc.ctex"]
 
 [params]
 

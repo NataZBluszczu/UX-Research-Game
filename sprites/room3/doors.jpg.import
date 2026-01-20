@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p1b1agjk5t0c"
-valid=false
+uid="uid://wxlsu04i7icd"
+path="res://.godot/imported/doors.jpg-952e64894fc1fc48a7fbe99f9d36c9f4.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://sprites/room1/Gemini_Generated_Image_pqmr3rpqmr3rpqmr.png"
+source_file="res://sprites/room3/doors.jpg"
+dest_files=["res://.godot/imported/doors.jpg-952e64894fc1fc48a7fbe99f9d36c9f4.ctex"]
 
 [params]
 

@@ -12,6 +12,7 @@ extends Node2D
 
 @onready var miejsce: Sprite2D = $Miejsce/Miejsce
 @onready var board: Node2D = $Board
+@onready var miejsce_area: Node2D = $Miejsce
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +28,8 @@ func _ready() -> void:
 	orange.modulate.a = 0.0
 	yellow.modulate.a = 0.0
 	purple.modulate.a = 0.0
+	
+	miejsce_area.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	pass # Replace with function body.
 
@@ -72,3 +75,4 @@ func _on_painting_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 	if event is InputEventMouseButton and event.pressed:
 		var tween = get_tree().create_tween()
 		tween.tween_property(obraz, "rotation", rotation + deg_to_rad(140), 1.0).set_ease(Tween.EASE_IN_OUT)
+		miejsce_area.process_mode = Node.PROCESS_MODE_INHERIT
