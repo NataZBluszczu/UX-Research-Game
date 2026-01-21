@@ -27,11 +27,13 @@ func _process(delta):
 				initialPos = global_position
 				offset = get_global_mouse_position() - global_position
 				global.is_dragging = true
+				global.non_eq_dragging = true
 				_on_drag_start()
 			if Input.is_action_pressed("click"):
 				global_position = get_global_mouse_position() - offset
 			elif Input.is_action_just_released("click"):
 				global.is_dragging = false
+				global.non_eq_dragging = false
 				_on_drag_end()
 				var tween = get_tree().create_tween()
 				if above_cauldron:

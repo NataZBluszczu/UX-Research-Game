@@ -4,7 +4,7 @@ func _ready():
 	modulate = Color(Color.MEDIUM_PURPLE, 0.3)
 	
 func _process(delta):
-	if global.is_dragging:
+	if global.is_dragging and global.non_eq_dragging == false:
 		modulate = Color(Color.MEDIUM_PURPLE, 0.7)
 	else:
 		modulate = Color(Color.MEDIUM_PURPLE, 0.3)
