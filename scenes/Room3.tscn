@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=34 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
 [ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
@@ -15,15 +15,39 @@
 [ext_resource type="Texture2D" uid="uid://chj3wiffqyq0k" path="res://sprites/deko2.png" id="14_4btv5"]
 [ext_resource type="PackedScene" uid="uid://celleqw678uui" path="res://prefabs/PurpleGem.tscn" id="15_2wjaf"]
 [ext_resource type="Texture2D" uid="uid://cg4pub7ki2ryb" path="res://sprites/room3/questionmark.png" id="16_2wjaf"]
-[ext_resource type="Texture2D" uid="uid://sabs31e15kf3" path="res://sprites/room3/szafka.png" id="17_rcyr4"]
+[ext_resource type="Texture2D" uid="uid://d4jyytnms8m6a" path="res://sprites/room3/szafka.png" id="17_rcyr4"]
 [ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="17_sk48j"]
+[ext_resource type="Script" uid="uid://bvhm2kmca1jo5" path="res://scripts/bookshelf.gd" id="17_yc5ve"]
+[ext_resource type="Script" uid="uid://cn0qwjmhqnil4" path="res://scripts/candle.gd" id="18_bgs03"]
 [ext_resource type="Texture2D" uid="uid://bscir2q6njh1c" path="res://sprites/room3/ksiazka1.png" id="18_ws00r"]
 [ext_resource type="Texture2D" uid="uid://dl7l83m4umeeo" path="res://sprites/room3/ksiazka2.png" id="19_bgs03"]
+[ext_resource type="Script" uid="uid://cgi4v8tfc6oqt" path="res://scripts/book.gd" id="20_obrw1"]
 [ext_resource type="Texture2D" uid="uid://cil0yadbewppw" path="res://sprites/room3/ksiazka3.png" id="20_yc5ve"]
 [ext_resource type="Texture2D" uid="uid://bxf5nuyqjv7qt" path="res://sprites/room3/ksiazka4.png" id="21_obrw1"]
 [ext_resource type="Texture2D" uid="uid://fi8iubrphblu" path="res://sprites/room3/ksiazka5.png" id="22_eupch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls135"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc5ve"]
+size = Vector2(28.922653, 188.30081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obrw1"]
+size = Vector2(60.73958, 195.4141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws00r"]
+size = Vector2(281.99048, 604.9984)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgs03"]
+size = Vector2(312.7533, 702.2854)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eupch"]
+size = Vector2(297.37177, 855.97156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16cux"]
+size = Vector2(307.62604, 1020.03906)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwm6x"]
+size = Vector2(302.49884, 1122.581)
 
 [node name="Room3" type="Node2D"]
 script = ExtResource("1_s61je")
@@ -273,35 +297,226 @@ texture = ExtResource("14_4btv5")
 [node name="PurpleGem" parent="." instance=ExtResource("15_2wjaf")]
 position = Vector2(1132.5, 726.61786)
 
-[node name="Ball" parent="." instance=ExtResource("17_sk48j")]
-position = Vector2(329, 692)
-
-[node name="Szafka" type="Sprite2D" parent="."]
+[node name="Bookshelf" type="Node2D" parent="."]
 position = Vector2(338, 868.00006)
 scale = Vector2(0.19504203, 0.195042)
+script = ExtResource("17_yc5ve")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bookshelf"]
+position = Vector2(0, -87.16099)
+scale = Vector2(1, 1.1454152)
 texture = ExtResource("17_rcyr4")
 
-[node name="Ksiazka1" type="Sprite2D" parent="Szafka"]
-position = Vector2(-443, 350)
+[node name="BookPlace1" type="Node2D" parent="Bookshelf"]
+position = Vector2(-861.35284, 651.1415)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bookshelf/BookPlace1" groups=["bookshelf"]]
+position = Vector2(2.6226044e-05, 0.00013923645)
+scale = Vector2(0.63714963, 0.7337839)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace1/StaticBody2D"]
+position = Vector2(0, -754.6185)
+scale = Vector2(1.9475622, 7.996481)
+shape = SubResource("RectangleShape2D_yc5ve")
+
+[node name="BookshelfArea" type="Area2D" parent="Bookshelf/BookPlace1"]
+position = Vector2(2.670288e-05, 0.00012207031)
+scale = Vector2(0.63714963, 0.7337839)
+script = ExtResource("18_bgs03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace1/BookshelfArea"]
+position = Vector2(1.5258789e-05, -754.6186)
+scale = Vector2(7.723281, 7.7232776)
+shape = SubResource("RectangleShape2D_obrw1")
+
+[node name="BookPlace2" type="Node2D" parent="Bookshelf"]
+position = Vector2(-456.31192, 651.14154)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bookshelf/BookPlace2" groups=["bookshelf"]]
+position = Vector2(685, -379.40533)
+scale = Vector2(0.63714963, 0.7337839)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace2/StaticBody2D"]
+position = Vector2(-1083.1476, -244.70251)
+scale = Vector2(1.9475622, 7.996481)
+shape = SubResource("RectangleShape2D_yc5ve")
+
+[node name="BookshelfArea" type="Area2D" parent="Bookshelf/BookPlace2"]
+position = Vector2(685, 36)
+scale = Vector2(0.63714963, 0.7337839)
+script = ExtResource("18_bgs03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace2/BookshelfArea"]
+position = Vector2(-1068.2477, -803.6792)
+scale = Vector2(7.723281, 7.7232776)
+shape = SubResource("RectangleShape2D_obrw1")
+
+[node name="BookPlace3" type="Node2D" parent="Bookshelf"]
+position = Vector2(-30.762634, 651.1415)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bookshelf/BookPlace3" groups=["bookshelf"]]
+position = Vector2(685, -369.15112)
+scale = Vector2(0.63714963, 0.7337839)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace3/StaticBody2D"]
+position = Vector2(-1083.1476, -244.70251)
+scale = Vector2(1.9475622, 7.996481)
+shape = SubResource("RectangleShape2D_yc5ve")
+
+[node name="BookshelfArea" type="Area2D" parent="Bookshelf/BookPlace3"]
+position = Vector2(685, -384.53244)
+scale = Vector2(0.63714963, 0.7337839)
+script = ExtResource("18_bgs03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace3/BookshelfArea"]
+position = Vector2(-1068.2477, -237.71533)
+scale = Vector2(7.723281, 7.7232776)
+shape = SubResource("RectangleShape2D_obrw1")
+
+[node name="BookPlace4" type="Node2D" parent="Bookshelf"]
+position = Vector2(384.53253, 651.14154)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bookshelf/BookPlace4" groups=["bookshelf"]]
+position = Vector2(685, -369.15112)
+scale = Vector2(0.63714963, 0.7337839)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace4/StaticBody2D"]
+position = Vector2(-1083.1476, -244.70251)
+scale = Vector2(1.9475622, 7.996481)
+shape = SubResource("RectangleShape2D_yc5ve")
+
+[node name="BookshelfArea" type="Area2D" parent="Bookshelf/BookPlace4"]
+position = Vector2(685, -379.40533)
+scale = Vector2(0.63714963, 0.7337839)
+script = ExtResource("18_bgs03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace4/BookshelfArea"]
+position = Vector2(-1068.2477, -237.71533)
+scale = Vector2(7.723281, 7.7232776)
+shape = SubResource("RectangleShape2D_obrw1")
+
+[node name="BookPlace5" type="Node2D" parent="Bookshelf"]
+position = Vector2(804.95465, 651.14154)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bookshelf/BookPlace5" groups=["bookshelf"]]
+position = Vector2(685, -369.15112)
+scale = Vector2(0.63714963, 0.7337839)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace5/StaticBody2D"]
+position = Vector2(-1083.1476, -244.70251)
+scale = Vector2(1.9475622, 7.996481)
+shape = SubResource("RectangleShape2D_yc5ve")
+
+[node name="BookshelfArea" type="Area2D" parent="Bookshelf/BookPlace5"]
+position = Vector2(681.9044, -379.40533)
+scale = Vector2(0.63714963, 0.7337839)
+script = ExtResource("18_bgs03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/BookPlace5/BookshelfArea"]
+position = Vector2(-1068.2477, -237.71533)
+scale = Vector2(7.723281, 7.7232776)
+shape = SubResource("RectangleShape2D_obrw1")
+
+[node name="Book1" type="Node2D" parent="Bookshelf"]
+position = Vector2(-451.18478, 651.14154)
+script = ExtResource("20_obrw1")
+
+[node name="Ksiazka1" type="Sprite2D" parent="Bookshelf/Book1"]
+position = Vector2(-9.536743e-07, -302.49893)
 texture = ExtResource("18_ws00r")
 
-[node name="Ksiazka2" type="Sprite2D" parent="Szafka"]
-position = Vector2(811, 302)
+[node name="Area2D" type="Area2D" parent="Bookshelf/Book1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/Book1/Area2D"]
+position = Vector2(-2.5635986, -302.49902)
+shape = SubResource("RectangleShape2D_ws00r")
+
+[node name="Book2" type="Node2D" parent="Bookshelf"]
+position = Vector2(804.9547, 651.14154)
+script = ExtResource("20_obrw1")
+
+[node name="Ksiazka2" type="Sprite2D" parent="Bookshelf/Book2"]
+position = Vector2(7.581711e-05, -348.6429)
 texture = ExtResource("19_bgs03")
 
-[node name="Ksiazka3" type="Sprite2D" parent="Szafka"]
-position = Vector2(-866, 231)
+[node name="Area2D" type="Area2D" parent="Bookshelf/Book2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/Book2/Area2D"]
+position = Vector2(-2.5637207, -351.27002)
+shape = SubResource("RectangleShape2D_bgs03")
+
+[node name="Book3" type="Node2D" parent="Bookshelf"]
+position = Vector2(-861.3528, 651.14154)
+script = ExtResource("20_obrw1")
+
+[node name="Ksiazka3" type="Sprite2D" parent="Bookshelf/Book3"]
+position = Vector2(0, -425.5494)
 texture = ExtResource("20_yc5ve")
 
-[node name="Ksiazka4" type="Sprite2D" parent="Szafka"]
-position = Vector2(-20, 153)
+[node name="Area2D" type="Area2D" parent="Bookshelf/Book3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/Book3/Area2D"]
+position = Vector2(0, -428.23975)
+shape = SubResource("RectangleShape2D_eupch")
+
+[node name="Book4" type="Node2D" parent="Bookshelf"]
+position = Vector2(-25.635498, 651.14154)
+script = ExtResource("20_obrw1")
+
+[node name="Ksiazka4" type="Sprite2D" parent="Bookshelf/Book4"]
+position = Vector2(7.200241e-05, -507.58313)
 texture = ExtResource("21_obrw1")
 
-[node name="Ksiazka5" type="Sprite2D" parent="Szafka"]
-position = Vector2(395, 97)
+[node name="Area2D" type="Area2D" parent="Bookshelf/Book4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/Book4/Area2D"]
+position = Vector2(-5.1273193, -510.27344)
+shape = SubResource("RectangleShape2D_16cux")
+
+[node name="Book5" type="Node2D" parent="Bookshelf"]
+position = Vector2(389.6596, 651.14154)
+script = ExtResource("20_obrw1")
+
+[node name="Ksiazka5" type="Sprite2D" parent="Bookshelf/Book5"]
+position = Vector2(-3.194809e-05, -558.85406)
 texture = ExtResource("22_eupch")
+
+[node name="Area2D" type="Area2D" parent="Bookshelf/Book5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bookshelf/Book5/Area2D"]
+position = Vector2(-2.5634766, -561.54395)
+shape = SubResource("RectangleShape2D_jwm6x")
+
+[node name="Ball" parent="." instance=ExtResource("17_sk48j")]
+visible = false
+position = Vector2(302, 945)
 
 [connection signal="input_event" from="FinalItems/S1/Area1" to="FinalItems/S1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S2/Area2" to="FinalItems/S2/Area2" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S3/Area3" to="FinalItems/S3/Area3" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S4/Area4" to="FinalItems/S4/Area4" method="_on_input_event"]
+[connection signal="input_event" from="Bookshelf/BookPlace1/BookshelfArea" to="Bookshelf/BookPlace1/BookshelfArea" method="_on_bookshelf_area_input_event"]
+[connection signal="input_event" from="Bookshelf/BookPlace2/BookshelfArea" to="Bookshelf/BookPlace2/BookshelfArea" method="_on_bookshelf_area_input_event"]
+[connection signal="input_event" from="Bookshelf/BookPlace3/BookshelfArea" to="Bookshelf/BookPlace3/BookshelfArea" method="_on_bookshelf_area_input_event"]
+[connection signal="input_event" from="Bookshelf/BookPlace4/BookshelfArea" to="Bookshelf/BookPlace4/BookshelfArea" method="_on_bookshelf_area_input_event"]
+[connection signal="input_event" from="Bookshelf/BookPlace5/BookshelfArea" to="Bookshelf/BookPlace5/BookshelfArea" method="_on_bookshelf_area_input_event"]
+[connection signal="body_entered" from="Bookshelf/Book1/Area2D" to="Bookshelf/Book1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Bookshelf/Book1/Area2D" to="Bookshelf/Book1" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Bookshelf/Book1/Area2D" to="Bookshelf/Book1" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Bookshelf/Book1/Area2D" to="Bookshelf/Book1" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Bookshelf/Book2/Area2D" to="Bookshelf/Book2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Bookshelf/Book2/Area2D" to="Bookshelf/Book2" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Bookshelf/Book2/Area2D" to="Bookshelf/Book2" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Bookshelf/Book2/Area2D" to="Bookshelf/Book2" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Bookshelf/Book3/Area2D" to="Bookshelf/Book3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Bookshelf/Book3/Area2D" to="Bookshelf/Book3" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Bookshelf/Book3/Area2D" to="Bookshelf/Book3" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Bookshelf/Book3/Area2D" to="Bookshelf/Book3" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Bookshelf/Book4/Area2D" to="Bookshelf/Book4" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Bookshelf/Book4/Area2D" to="Bookshelf/Book4" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Bookshelf/Book4/Area2D" to="Bookshelf/Book4" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Bookshelf/Book4/Area2D" to="Bookshelf/Book4" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Bookshelf/Book5/Area2D" to="Bookshelf/Book5" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Bookshelf/Book5/Area2D" to="Bookshelf/Book5" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Bookshelf/Book5/Area2D" to="Bookshelf/Book5" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Bookshelf/Book5/Area2D" to="Bookshelf/Book5" method="_on_area_2d_mouse_exited"]

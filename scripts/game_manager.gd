@@ -21,7 +21,7 @@ func _input(event):
 			is_drag_mode = !is_drag_mode
 			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
 		if event.is_action_pressed("2"):
-			print(candles_lighten)
+			print(selected_item)
 
 func _process(delta: float) -> void:
 	if is_drag_mode:

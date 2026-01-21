@@ -129,25 +129,20 @@ func _on_spider_fed_wrong():
 	
 	var tween = get_tree().create_tween()
 	
-	# Czerwony + powiększenie
 	tween.tween_property(spider_sprite, "modulate", Color.RED, 0.3)
 	tween.parallel().tween_property(spider_sprite, "scale", Vector2(spider_scale.x * 1.1, spider_scale.y * 1.1), 0.3)
 	
-	# Shake rozpoczyna się
 	var shake_tween = get_tree().create_tween()
-	shake_tween.tween_interval(0.15)  # Mały delay przed shake
+	shake_tween.tween_interval(0.15) 
 	for i in range(15):
 		var offset = Vector2(randf_range(-6, 6), randf_range(-6, 6))
 		shake_tween.tween_property(spider_sprite, "position", original_pos + offset, 0.03)
 	
-	# ✅ WYPLUCIE w połowie shake (najbardziej dramatyczne)
-	tween.tween_interval(0.3)  # Poczekaj chwilę po zaczerwienieniu
+	tween.tween_interval(0.3) 
 	tween.tween_callback(spit_flies_out)
 	
-	# Poczekaj aż muchy odlecą
 	tween.tween_interval(0.4)
-	
-	# Powrót do normalnego
+
 	tween.tween_property(spider_sprite, "modulate", Color.WHITE, 0.3)
 	tween.parallel().tween_property(spider_sprite, "scale", spider_scale, 0.3)
 	tween.parallel().tween_property(spider_sprite, "position", original_pos, 0.3)
@@ -163,7 +158,6 @@ func spit_flies_out():
 		var fly_tween = get_tree().create_tween()
 		var duration = randf_range(0.4, 0.7)
 		
-		# Każda mucha leci w losowym kierunku najpierw (eksplozja)
 		var explosion_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * 30
 		var mid_point = spider.position + explosion_dir
 		

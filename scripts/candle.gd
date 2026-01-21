@@ -49,3 +49,21 @@ func _on_spider_area_input_event(viewport: Node, event: InputEvent, shape_idx: i
 				selected_item.is_selected = false
 				GameManager.selected_item = null
 			
+
+
+func _on_bookshelf_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if GameManager.input_locked:
+			return
+		var bookshelf: Node2D = $"../.."
+		var selected_item = GameManager.selected_item
+		
+		if selected_item:
+			if selected_item.name.contains("Book"):
+				var book_nr = selected_item.name.right(1)
+				var book_placed_on = self.get_parent().name.right(1)
+				var book_slot_nr = str(bookshelf.books.find(book_nr) + 1)
+				if book_slot_nr != book_placed_on:
+					selected_item.is_selected = false
+					GameManager.selected_item = null
+					bookshelf.book_replaced(book_nr, book_placed_on)
