@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dd8a7nenn56ff"]
+[gd_scene load_steps=35 format=3 uid="uid://dd8a7nenn56ff"]
 
 [ext_resource type="Script" uid="uid://be55erxuoxxa1" path="res://scripts/room_2.gd" id="1_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_uq8dp"]
@@ -19,6 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://bupi1s1xdu81c" path="res://sprites/klejonty/purple.png" id="15_7hdcm"]
 [ext_resource type="PackedScene" uid="uid://ciepr2ny302l0" path="res://prefabs/GreenGem.tscn" id="16_xdxtg"]
 [ext_resource type="Texture2D" uid="uid://da5rlcim4c7lc" path="res://sprites/deko1.png" id="19_46tr2"]
+[ext_resource type="Texture2D" uid="uid://bjlyyddkadjej" path="res://sprites/room2/fly.png" id="20_7t0uk"]
+[ext_resource type="PackedScene" uid="uid://cdh16qlqmnd8d" path="res://prefabs/Dreamcatcher.tscn" id="20_ex0f5"]
+[ext_resource type="Texture2D" uid="uid://b772t37o4y5ec" path="res://sprites/room2/fly2.png" id="21_nkk1k"]
+[ext_resource type="Texture2D" uid="uid://dcbultsmubq8i" path="res://sprites/room2/fly3.png" id="22_cxjl4"]
+[ext_resource type="Texture2D" uid="uid://r7n22kpxv8ms" path="res://sprites/room2/fly4.png" id="23_b0wn1"]
+[ext_resource type="Texture2D" uid="uid://br6utahhq576j" path="res://sprites/room2/fly5.png" id="24_jinjd"]
+[ext_resource type="Texture2D" uid="uid://csm7gtseiwjsj" path="res://sprites/room2/silk.png" id="25_b0wn1"]
+[ext_resource type="Script" uid="uid://ehxvynqukx7i" path="res://scripts/fly.gd" id="26_ex0f5"]
+[ext_resource type="Texture2D" uid="uid://ccfn6ljjn6kt3" path="res://sprites/room2/spider.png" id="26_jinjd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83skf"]
 
@@ -30,6 +39,12 @@ size = Vector2(83.97046, 25.527908)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ss6k"]
 size = Vector2(472, 239.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jinjd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c62yl"]
+radius = 11.750885
+height = 23.50177
 
 [node name="Room2" type="Node2D"]
 script = ExtResource("1_5ujgq")
@@ -236,8 +251,132 @@ position = Vector2(192, 690.4286)
 scale = Vector2(0.7276786, 0.7276786)
 texture = ExtResource("19_46tr2")
 
+[node name="Dreamcatcher" parent="." instance=ExtResource("20_ex0f5")]
+visible = false
+position = Vector2(679, 701)
+
+[node name="Spider" type="Node2D" parent="."]
+position = Vector2(680, 808)
+
+[node name="Silk" type="Sprite2D" parent="Spider"]
+position = Vector2(-4, -534)
+scale = Vector2(0.71972656, 0.7197265)
+texture = ExtResource("25_b0wn1")
+
+[node name="SpiderSprite" type="Sprite2D" parent="Spider"]
+scale = Vector2(0.29667586, 0.2966759)
+texture = ExtResource("26_jinjd")
+
+[node name="Spider" type="StaticBody2D" parent="Spider" groups=["usage"]]
+position = Vector2(-281, -204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider/Spider"]
+position = Vector2(280, 204.00003)
+scale = Vector2(17.102098, 17.102098)
+shape = SubResource("CircleShape2D_jinjd")
+
+[node name="SpiderArea" type="Area2D" parent="Spider"]
+position = Vector2(-281, -204)
+script = ExtResource("9_slqss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider/SpiderArea"]
+position = Vector2(280, 204.00003)
+scale = Vector2(17.102098, 17.102098)
+shape = SubResource("CircleShape2D_jinjd")
+
+[node name="Fly1" type="Node2D" parent="."]
+position = Vector2(336, 68)
+script = ExtResource("26_ex0f5")
+
+[node name="Fly1" type="Sprite2D" parent="Fly1"]
+scale = Vector2(0.13664597, 0.13664597)
+texture = ExtResource("20_7t0uk")
+
+[node name="Area2D" type="Area2D" parent="Fly1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly1/Area2D"]
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_c62yl")
+
+[node name="Fly2" type="Node2D" parent="."]
+position = Vector2(73, 72)
+script = ExtResource("26_ex0f5")
+
+[node name="Fly1" type="Sprite2D" parent="Fly2"]
+scale = Vector2(0.13664597, 0.13664597)
+texture = ExtResource("21_nkk1k")
+
+[node name="Area2D" type="Area2D" parent="Fly2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly2/Area2D"]
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_c62yl")
+
+[node name="Fly3" type="Node2D" parent="."]
+position = Vector2(195, 141)
+script = ExtResource("26_ex0f5")
+
+[node name="Fly1" type="Sprite2D" parent="Fly3"]
+scale = Vector2(0.13664597, 0.13664597)
+texture = ExtResource("22_cxjl4")
+
+[node name="Area2D" type="Area2D" parent="Fly3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly3/Area2D"]
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_c62yl")
+
+[node name="Fly4" type="Node2D" parent="."]
+position = Vector2(93, 259)
+script = ExtResource("26_ex0f5")
+
+[node name="Fly1" type="Sprite2D" parent="Fly4"]
+scale = Vector2(0.13664597, 0.13664597)
+texture = ExtResource("23_b0wn1")
+
+[node name="Area2D" type="Area2D" parent="Fly4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly4/Area2D"]
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_c62yl")
+
+[node name="Fly5" type="Node2D" parent="."]
+position = Vector2(329, 204)
+script = ExtResource("26_ex0f5")
+
+[node name="Fly1" type="Sprite2D" parent="Fly5"]
+scale = Vector2(0.13664597, 0.13664597)
+texture = ExtResource("24_jinjd")
+
+[node name="Area2D" type="Area2D" parent="Fly5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly5/Area2D"]
+scale = Vector2(4.255, 4.255)
+shape = SubResource("CapsuleShape2D_c62yl")
+
 [connection signal="input_event" from="Swiecznik/Candle1/Area1" to="Swiecznik/Candle1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="Swiecznik/Candle2/Area2" to="Swiecznik/Candle2/Area2" method="_on_input_event"]
 [connection signal="input_event" from="Swiecznik/Candle3/Area3" to="Swiecznik/Candle3/Area3" method="_on_input_event"]
 [connection signal="input_event" from="Miejsce/Area2D" to="Miejsce/Area2D" method="_on_gems_place_input_event"]
 [connection signal="input_event" from="Painting/Area2D" to="." method="_on_painting_input_event"]
+[connection signal="input_event" from="Spider/SpiderArea" to="Spider/SpiderArea" method="_on_spider_area_input_event"]
+[connection signal="body_entered" from="Fly1/Area2D" to="Fly1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fly1/Area2D" to="Fly1" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Fly1/Area2D" to="Fly1" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Fly1/Area2D" to="Fly1" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Fly2/Area2D" to="Fly2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fly2/Area2D" to="Fly2" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Fly2/Area2D" to="Fly2" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Fly2/Area2D" to="Fly2" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Fly3/Area2D" to="Fly3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fly3/Area2D" to="Fly3" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Fly3/Area2D" to="Fly3" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Fly3/Area2D" to="Fly3" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Fly4/Area2D" to="Fly4" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fly4/Area2D" to="Fly4" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Fly4/Area2D" to="Fly4" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Fly4/Area2D" to="Fly4" method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Fly5/Area2D" to="Fly5" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Fly5/Area2D" to="Fly5" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Fly5/Area2D" to="Fly5" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Fly5/Area2D" to="Fly5" method="_on_area_2d_mouse_exited"]

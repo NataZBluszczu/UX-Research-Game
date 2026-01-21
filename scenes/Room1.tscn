@@ -1,11 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2dq226a7wlrv"]
+[gd_scene load_steps=21 format=3 uid="uid://d2dq226a7wlrv"]
 
 [ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
-[ext_resource type="PackedScene" uid="uid://cdh16qlqmnd8d" path="res://prefabs/Dreamcatcher.tscn" id="3_bj4ne"]
 [ext_resource type="Texture2D" uid="uid://etf0d28tqe5s" path="res://sprites/room1/background1.jpg" id="3_stay0"]
 [ext_resource type="PackedScene" uid="uid://b2bwtwqn83gey" path="res://prefabs/YellowGem.tscn" id="4_stay0"]
-[ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="4_xhlaj"]
 [ext_resource type="Script" uid="uid://djhqqcuyw2w4w" path="res://scripts/cauldron.gd" id="6_hwyyj"]
 [ext_resource type="Texture2D" uid="uid://dihkyrfh0rbtj" path="res://sprites/room1/cauldron2.png" id="6_yceeu"]
 [ext_resource type="PackedScene" uid="uid://e8yhmohow3px" path="res://prefabs/Amulet.tscn" id="7_bc387"]
@@ -18,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ebrfxvonq4xm" path="res://sprites/room1/red.png" id="16_stay0"]
 [ext_resource type="Texture2D" uid="uid://duicg3wctom3v" path="res://sprites/room1/green.png" id="17_gu8eb"]
 [ext_resource type="PackedScene" uid="uid://c424jss0kf4q0" path="res://prefabs/OrangeGem.tscn" id="18_gu8eb"]
+[ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="18_poay4"]
 [ext_resource type="Texture2D" uid="uid://dhsebw80epapa" path="res://sprites/deko3.png" id="19_kj0mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj4ne"]
@@ -69,12 +68,6 @@ shape = SubResource("CircleShape2D_bj4ne")
 position = Vector2(932, 752)
 scale = Vector2(20.925, 20.925)
 shape = SubResource("CircleShape2D_bj4ne")
-
-[node name="Dreamcatcher" parent="." instance=ExtResource("3_bj4ne")]
-position = Vector2(1543, 116)
-
-[node name="Ball" parent="." instance=ExtResource("4_xhlaj")]
-position = Vector2(538, 839)
 
 [node name="Amulet" parent="." instance=ExtResource("7_bc387")]
 position = Vector2(952, 473)
@@ -176,6 +169,9 @@ position = Vector2(1163, 305)
 position = Vector2(983.00006, 336)
 scale = Vector2(0.65350467, 0.65350467)
 texture = ExtResource("19_kj0mj")
+
+[node name="Matches" parent="." instance=ExtResource("18_poay4")]
+position = Vector2(294, 858)
 
 [connection signal="input_event" from="Cauldron/CauldronBody" to="Cauldron" method="_on_cauldron_input_event"]
 [connection signal="input_event" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_input_event"]

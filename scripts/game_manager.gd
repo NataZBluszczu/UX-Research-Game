@@ -111,3 +111,21 @@ func gem_placed(gem_color: String) -> bool:
 	else:
 		return false
 	
+
+#spider
+signal fly_added
+signal wrong_flies
+signal right_flies
+var flies_added = []
+var flies_pattern = ["4","5","1","2","3"]
+
+func check_fly(fly_nr: String):
+	flies_added.append(fly_nr)
+	if flies_added.size() < 5:
+		fly_added.emit()
+	if flies_added.size() == 5:
+		if flies_added == flies_pattern:
+			right_flies.emit()
+		else:
+			wrong_flies.emit()
+			flies_added = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vcu5l0fowgd3"]
+[gd_scene load_steps=24 format=3 uid="uid://vcu5l0fowgd3"]
 
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_gn08f"]
 [ext_resource type="Script" uid="uid://dv4hfo4owim0" path="res://scripts/room_3.gd" id="1_s61je"]
@@ -12,9 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://csh24g40apyuh" path="res://sprites/board.png" id="9_jr2i7"]
 [ext_resource type="Texture2D" uid="uid://cvs1f4qji3k7r" path="res://sprites/dreamcatcher.png" id="10_sg02c"]
 [ext_resource type="Script" uid="uid://tx2e27kvmww0" path="res://scripts/shelf.gd" id="12_0jg4w"]
-[ext_resource type="PackedScene" uid="uid://r54jf3cnlvro" path="res://prefabs/Matches.tscn" id="13_jr2i7"]
 [ext_resource type="Texture2D" uid="uid://chj3wiffqyq0k" path="res://sprites/deko2.png" id="14_4btv5"]
 [ext_resource type="PackedScene" uid="uid://celleqw678uui" path="res://prefabs/PurpleGem.tscn" id="15_2wjaf"]
+[ext_resource type="Texture2D" uid="uid://cg4pub7ki2ryb" path="res://sprites/room3/questionmark.png" id="16_2wjaf"]
+[ext_resource type="Texture2D" uid="uid://sabs31e15kf3" path="res://sprites/room3/szafka.png" id="17_rcyr4"]
+[ext_resource type="PackedScene" uid="uid://lgq4638iyeja" path="res://prefabs/Ball.tscn" id="17_sk48j"]
+[ext_resource type="Texture2D" uid="uid://bscir2q6njh1c" path="res://sprites/room3/ksiazka1.png" id="18_ws00r"]
+[ext_resource type="Texture2D" uid="uid://dl7l83m4umeeo" path="res://sprites/room3/ksiazka2.png" id="19_bgs03"]
+[ext_resource type="Texture2D" uid="uid://cil0yadbewppw" path="res://sprites/room3/ksiazka3.png" id="20_yc5ve"]
+[ext_resource type="Texture2D" uid="uid://bxf5nuyqjv7qt" path="res://sprites/room3/ksiazka4.png" id="21_obrw1"]
+[ext_resource type="Texture2D" uid="uid://fi8iubrphblu" path="res://sprites/room3/ksiazka5.png" id="22_eupch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ls135"]
 
@@ -41,13 +48,14 @@ scale = Vector2(1.3144331, 1.314433)
 texture = ExtResource("5_784tl")
 
 [node name="Circle" type="Sprite2D" parent="."]
-position = Vector2(803.0897, 490.3006)
-scale = Vector2(0.6277345, 0.62773436)
+position = Vector2(803.00006, 482.00003)
+scale = Vector2(0.60033655, 0.60033643)
 texture = ExtResource("3_5hlaq")
 
 [node name="FinalItems" type="Node2D" parent="."]
 
 [node name="S1" type="Node2D" parent="FinalItems"]
+position = Vector2(-5, 51)
 
 [node name="Amulet" type="Sprite2D" parent="FinalItems/S1"]
 visible = false
@@ -93,7 +101,17 @@ position = Vector2(810, 685)
 scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_ls135")
 
+[node name="Questionmark" type="Sprite2D" parent="FinalItems/S1"]
+position = Vector2(810, 648)
+scale = Vector2(0.08127958, 0.08127958)
+texture = ExtResource("16_2wjaf")
+
 [node name="S2" type="Node2D" parent="FinalItems"]
+
+[node name="Questionmark" type="Sprite2D" parent="FinalItems/S2"]
+position = Vector2(805, 221)
+scale = Vector2(0.08127958, 0.08127958)
+texture = ExtResource("16_2wjaf")
 
 [node name="Amulet" type="Sprite2D" parent="FinalItems/S2"]
 visible = false
@@ -189,6 +207,11 @@ position = Vector2(810, 685)
 scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_ls135")
 
+[node name="Questionmark" type="Sprite2D" parent="FinalItems/S3"]
+position = Vector2(1079, 448)
+scale = Vector2(0.08127958, 0.08127958)
+texture = ExtResource("16_2wjaf")
+
 [node name="S4" type="Node2D" parent="FinalItems"]
 
 [node name="Amulet" type="Sprite2D" parent="FinalItems/S4"]
@@ -237,16 +260,46 @@ position = Vector2(810, 685)
 scale = Vector2(7.723277, 7.723277)
 shape = SubResource("CircleShape2D_ls135")
 
-[node name="Matches" parent="." instance=ExtResource("13_jr2i7")]
-position = Vector2(1248, 852)
+[node name="Questionmark" type="Sprite2D" parent="FinalItems/S4"]
+position = Vector2(528.00006, 447.00003)
+scale = Vector2(0.08127958, 0.08127958)
+texture = ExtResource("16_2wjaf")
 
 [node name="Deko2" type="Sprite2D" parent="."]
-position = Vector2(229.00002, 779.00006)
-scale = Vector2(0.6348829, 0.6348829)
+position = Vector2(1213.5, 830.61786)
+scale = Vector2(0.5285505, 0.5285505)
 texture = ExtResource("14_4btv5")
 
 [node name="PurpleGem" parent="." instance=ExtResource("15_2wjaf")]
-position = Vector2(131, 665)
+position = Vector2(1132.5, 726.61786)
+
+[node name="Ball" parent="." instance=ExtResource("17_sk48j")]
+position = Vector2(329, 692)
+
+[node name="Szafka" type="Sprite2D" parent="."]
+position = Vector2(338, 868.00006)
+scale = Vector2(0.19504203, 0.195042)
+texture = ExtResource("17_rcyr4")
+
+[node name="Ksiazka1" type="Sprite2D" parent="Szafka"]
+position = Vector2(-443, 350)
+texture = ExtResource("18_ws00r")
+
+[node name="Ksiazka2" type="Sprite2D" parent="Szafka"]
+position = Vector2(811, 302)
+texture = ExtResource("19_bgs03")
+
+[node name="Ksiazka3" type="Sprite2D" parent="Szafka"]
+position = Vector2(-866, 231)
+texture = ExtResource("20_yc5ve")
+
+[node name="Ksiazka4" type="Sprite2D" parent="Szafka"]
+position = Vector2(-20, 153)
+texture = ExtResource("21_obrw1")
+
+[node name="Ksiazka5" type="Sprite2D" parent="Szafka"]
+position = Vector2(395, 97)
+texture = ExtResource("22_eupch")
 
 [connection signal="input_event" from="FinalItems/S1/Area1" to="FinalItems/S1/Area1" method="_on_input_event"]
 [connection signal="input_event" from="FinalItems/S2/Area2" to="FinalItems/S2/Area2" method="_on_input_event"]
