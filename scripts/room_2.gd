@@ -100,22 +100,18 @@ func _on_painting_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 		
 #SPIDER
 func _on_fly_added():
-	GameManager.input_locked = true
 	var tween = get_tree().create_tween()
 	var base_scale: Vector2 = spider.scale
 	tween.tween_property(spider, "scale", Vector2(1.05, 1.05), 0.2)
 	tween.tween_property(spider, "scale", Vector2(base_scale.x, base_scale.y), 0.3)
-	tween.finished.connect(GameManager._on_anim_finished)
 	
 
 func _on_spider_fed_well():
 	dreamcatcher.visible = true
 	var start_pos = spider.position.y
-	GameManager.input_locked = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(spider, "position:y", start_pos + 60, 0.3).set_ease(Tween.EASE_OUT)
 	tween.tween_property(spider, "position:y", start_pos - 1000, 2.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	tween.finished.connect(GameManager._on_anim_finished)
 	fly_1.queue_free()
 	fly_2.queue_free()
 	fly_3.queue_free()
@@ -153,6 +149,7 @@ func spit_flies_out():
 	for fly in flies:
 		fly.position = spider.position
 		fly.visible = true
+		fly.scale = Vector2(1,1)
 	
 	for i in range(flies.size()):
 		var fly_tween = get_tree().create_tween()

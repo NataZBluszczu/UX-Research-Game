@@ -43,6 +43,10 @@ func book_replaced(book_nr1: String, book_placed_on: String):
 		.set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	books_moved(book_nr1, book_nr2)
+	if GameManager.selected_item != null:
+		GameManager.selected_item.is_selected = false
+		GameManager.selected_item.scale = Vector2(1, 1)
+		GameManager.selected_item = null
 	
 func book_dragged(book_nr1: String, book_placed_on: String):
 	var book_nr2 = books[int(book_placed_on) - 1]

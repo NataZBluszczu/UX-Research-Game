@@ -90,7 +90,6 @@ func correct_light_item(item_name: String, candle_nr: String) -> bool:
 			lighted_candle.emit(candle_nr)
 			if not 0 in candles_lighten:
 				light_quest_finished = true
-				InventoryManager.remove_item(item_name)
 				return false
 			return true
 		else:
