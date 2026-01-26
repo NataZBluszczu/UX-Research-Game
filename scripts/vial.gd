@@ -41,8 +41,9 @@ func _process(delta):
 				
 				var tween = get_tree().create_tween()
 				if above_cauldron:
-					GameManager.add_vial_to_cauldron(name)
-					body_ref.get_parent().pulse_animation()
+					if GameManager.is_cauldron_activated == true:
+						GameManager.add_vial_to_cauldron(name)
+						body_ref.get_parent().pulse_animation(name)
 				GameManager.input_locked = true
 				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 				await tween.finished

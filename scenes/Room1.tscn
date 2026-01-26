@@ -1,16 +1,25 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2dq226a7wlrv"]
+[gd_scene load_steps=31 format=3 uid="uid://d2dq226a7wlrv"]
 
 [ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
 [ext_resource type="Texture2D" uid="uid://etf0d28tqe5s" path="res://sprites/room1/background1.jpg" id="3_stay0"]
 [ext_resource type="PackedScene" uid="uid://b2bwtwqn83gey" path="res://prefabs/YellowGem.tscn" id="4_stay0"]
 [ext_resource type="Script" uid="uid://djhqqcuyw2w4w" path="res://scripts/cauldron.gd" id="6_hwyyj"]
-[ext_resource type="Texture2D" uid="uid://dihkyrfh0rbtj" path="res://sprites/room1/cauldron2.png" id="6_yceeu"]
 [ext_resource type="PackedScene" uid="uid://e8yhmohow3px" path="res://prefabs/Amulet.tscn" id="7_bc387"]
+[ext_resource type="Texture2D" uid="uid://0e4e7t7ktgmp" path="res://sprites/room1/wood.png" id="7_kj0mj"]
+[ext_resource type="Texture2D" uid="uid://op20jtn6c2n" path="res://sprites/room1/cauldron_default.png" id="7_poay4"]
 [ext_resource type="Texture2D" uid="uid://hq0bsmlo7ijr" path="res://sprites/room1/bookshelf.png" id="9_i1w2g"]
+[ext_resource type="Texture2D" uid="uid://fo1d2egp6bol" path="res://sprites/room1/fire.png" id="9_l3kxn"]
+[ext_resource type="Texture2D" uid="uid://ds71f2scxwbvb" path="res://sprites/room1/cauldron-purple.png" id="10_5w20y"]
 [ext_resource type="Texture2D" uid="uid://cl0rw2ipsqc7v" path="res://sprites/room1/blue.png" id="10_bju5w"]
+[ext_resource type="Texture2D" uid="uid://byjctlnobofdl" path="res://sprites/room1/cauldron-green.png" id="10_cffod"]
 [ext_resource type="Script" uid="uid://dfvrf3xd00ofe" path="res://scripts/vial.gd" id="10_tx616"]
+[ext_resource type="Texture2D" uid="uid://3pk7alhye5xl" path="res://sprites/room1/cauldron-blue.png" id="10_ydwsx"]
+[ext_resource type="Texture2D" uid="uid://dvevpwxhlenki" path="res://sprites/room1/cauldron-white.png" id="11_l3kxn"]
 [ext_resource type="Texture2D" uid="uid://bpvfy7ymjgghd" path="res://sprites/room1/violet.png" id="11_t64ac"]
+[ext_resource type="Texture2D" uid="uid://dj82q5n5fdimo" path="res://sprites/room1/cauldron-pink.png" id="12_cylnq"]
+[ext_resource type="Texture2D" uid="uid://8b5iereekmoe" path="res://sprites/room1/cauldron-yellow.png" id="13_d7xy7"]
+[ext_resource type="Texture2D" uid="uid://bk4nol3mbxug4" path="res://sprites/room1/cauldron-red.png" id="14_rv0wq"]
 [ext_resource type="Texture2D" uid="uid://dgi7d5kr3dirp" path="res://sprites/room1/pink.png" id="14_vgobq"]
 [ext_resource type="Texture2D" uid="uid://brngvxokpuqo3" path="res://sprites/room1/yellow.png" id="15_poay4"]
 [ext_resource type="Texture2D" uid="uid://ebrfxvonq4xm" path="res://sprites/room1/red.png" id="16_stay0"]
@@ -20,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://dhsebw80epapa" path="res://sprites/deko3.png" id="19_kj0mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj4ne"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3kxn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t64ac"]
 radius = 5.405403
@@ -47,30 +58,87 @@ scale = Vector2(0.60611975, 0.60611975)
 texture = ExtResource("9_i1w2g")
 
 [node name="Cauldron" type="Node2D" parent="."]
-position = Vector2(16, 53)
+position = Vector2(23, 35)
 script = ExtResource("6_hwyyj")
 
+[node name="Wood" type="Sprite2D" parent="Cauldron"]
+position = Vector2(930, 943)
+scale = Vector2(0.4845882, 0.48458824)
+texture = ExtResource("7_kj0mj")
+
 [node name="CauldronSprite" type="Sprite2D" parent="Cauldron"]
-position = Vector2(938, 700)
-scale = Vector2(0.85910666, 0.8591066)
-texture = ExtResource("6_yceeu")
+position = Vector2(930, 791)
+scale = Vector2(0.53257394, 0.53257394)
+texture = ExtResource("7_poay4")
+
+[node name="Fire" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(1.8776855, 184.01196)
+scale = Vector2(1.4591566, 1.4591565)
+texture = ExtResource("9_l3kxn")
+
+[node name="Pink" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("12_cylnq")
+
+[node name="Purple" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("10_5w20y")
+
+[node name="Green" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("10_cffod")
+
+[node name="Blue" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("10_ydwsx")
+
+[node name="Yellow" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("13_d7xy7")
+
+[node name="Red" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(-0.00024414063, -458.15247)
+scale = Vector2(1.5451126, 1.5451128)
+texture = ExtResource("14_rv0wq")
+
+[node name="White" type="Sprite2D" parent="Cauldron/CauldronSprite"]
+position = Vector2(0, -458.15247)
+scale = Vector2(1.5453254, 1.5453254)
+texture = ExtResource("11_l3kxn")
 
 [node name="CauldronBody" type="StaticBody2D" parent="Cauldron" groups=["usage"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronBody"]
-position = Vector2(932, 752)
+visible = false
+position = Vector2(931, 801)
 scale = Vector2(20.925, 20.925)
 shape = SubResource("CircleShape2D_bj4ne")
 
 [node name="Area2D" type="Area2D" parent="Cauldron"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/Area2D"]
-position = Vector2(932, 752)
+visible = false
+position = Vector2(931, 801)
 scale = Vector2(20.925, 20.925)
 shape = SubResource("CircleShape2D_bj4ne")
 
+[node name="Fire2" type="Node2D" parent="Cauldron"]
+position = Vector2(937, 939)
+
+[node name="FireArea" type="Area2D" parent="Cauldron/Fire2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/Fire2/FireArea"]
+position = Vector2(-7.000001, -42.000004)
+scale = Vector2(11.01913, 5.6373334)
+shape = SubResource("CircleShape2D_l3kxn")
+
 [node name="Amulet" parent="." instance=ExtResource("7_bc387")]
-position = Vector2(952, 473)
+position = Vector2(963, 499)
 
 [node name="Purple" type="Node2D" parent="."]
 position = Vector2(297, 331)
@@ -175,6 +243,9 @@ position = Vector2(294, 858)
 
 [connection signal="input_event" from="Cauldron/CauldronBody" to="Cauldron" method="_on_cauldron_input_event"]
 [connection signal="input_event" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_input_event"]
+[connection signal="mouse_entered" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_mouse_entered"]
+[connection signal="mouse_exited" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_mouse_exited"]
 [connection signal="body_entered" from="Purple/Area2D" to="Purple" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Purple/Area2D" to="Purple" method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Purple/Area2D" to="Purple" method="_on_area_2d_mouse_entered"]

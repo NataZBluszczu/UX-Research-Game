@@ -10,6 +10,7 @@ var is_selected = false
 var above_candle = false
 var above_shelf = false
 var above_gems = false
+var above_cauldron = false
 var drag_started_here = false 
 
 func _process(delta):
@@ -76,6 +77,11 @@ func _process(delta):
 								tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 						else:
 							tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
+				if above_cauldron:
+					if InventoryManager.has_item(name):
+						if GameManager.is_cauldron_activated == false:
+							body_ref.get_parent().cauldron_switch()
+						tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 	else:
 		if clickable:
 			if Input.is_action_just_pressed("click"):
@@ -104,6 +110,7 @@ func toggle_selected():
 				GameManager.selected_item.is_selected = false
 				GameManager.selected_item.scale = Vector2(1, 1)
 				GameManager.selected_item.clickable = false
+				GameManager.selected_vial = null
 				 
 			GameManager.selected_item = self
 			is_selected = true
@@ -121,6 +128,9 @@ func _on_area_2d_body_entered(body:StaticBody2D) -> void:
 		if body.name == "GemsPlace":
 			above_gems = true
 			body_ref = body
+		if body.name.contains("Cauldron") and name == "Matches":
+			above_cauldron = true
+			body_ref = body
 	if body.is_in_group('dropable'):
 		is_inside_dropable = true
 		body.modulate = Color(Color.REBECCA_PURPLE, 1)
@@ -130,6 +140,7 @@ func _on_area_2d_body_exited(body) -> void:
 	above_shelf = false
 	above_candle = false
 	above_gems = false
+	above_cauldron = false
 	if body.is_in_group('dropable') and body_ref == body:
 		is_inside_dropable = false
 		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)

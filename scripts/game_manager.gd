@@ -4,7 +4,9 @@ var input_locked := false
 
 var selected_item = null
 var selected_vial = null
-var is_drag_mode = false  
+var is_drag_mode = true  
+
+var is_cauldron_activated = false
 
 func _on_anim_finished() -> void:
 	input_locked = false
@@ -21,7 +23,7 @@ func _input(event):
 			is_drag_mode = !is_drag_mode
 			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
 		if event.is_action_pressed("2"):
-			print(selected_item)
+			print(selected_vial)
 
 func _process(delta: float) -> void:
 	if is_drag_mode:
@@ -50,10 +52,13 @@ func add_to_cauldron(item_name: String):
 			
 func add_vial_to_cauldron(color: String):
 	added_vials.append(color)
-	if ends_with_pattern(added_vials, pattern):
+	if added_vials == pattern:
 		vial_quest_finished.emit()
 		spawn_amulet.emit()
 		print("TRAFIONY WZÓR!")
+
+func reset_vials():
+	added_vials = []
 
 func ends_with_pattern(seq: Array, pat: Array) -> bool:
 	if seq.size() < pat.size():
@@ -73,6 +78,7 @@ func correct_finish_item(item_name: String, shelf_nr: String) -> bool:
 			return false
 		if not "" in finish_items_collected:
 			finish_quest_finished.emit()
+			GlobalLog.save_final_log()
 		return true
 	else:
 		return false

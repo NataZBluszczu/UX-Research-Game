@@ -37,5 +37,16 @@ offset_right = 96.0
 offset_bottom = 588.0
 texture_normal = ExtResource("7_lhr70")
 
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer"]
+modulate = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="UI/RightArrow" to="." method="_go_right"]
 [connection signal="pressed" from="UI/LeftArrow" to="." method="_go_left"]

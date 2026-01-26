@@ -1,10 +1,13 @@
-[gd_scene load_steps=35 format=3 uid="uid://dd8a7nenn56ff"]
+[gd_scene load_steps=38 format=3 uid="uid://dd8a7nenn56ff"]
 
 [ext_resource type="Script" uid="uid://be55erxuoxxa1" path="res://scripts/room_2.gd" id="1_5ujgq"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_uq8dp"]
 [ext_resource type="Texture2D" uid="uid://c3hj8ao3bp2bm" path="res://sprites/room1/background2.jpg" id="3_46tr2"]
 [ext_resource type="Texture2D" uid="uid://bgabmrg61q0cm" path="res://sprites/room2/swiecznik.png" id="4_4tgmk"]
+[ext_resource type="Texture2D" uid="uid://dmf7srjvg5qp5" path="res://sprites/room2/liczby.png" id="4_c62yl"]
 [ext_resource type="Texture2D" uid="uid://670v42c5ch6t" path="res://sprites/UV.png" id="5_5ujgq"]
+[ext_resource type="Texture2D" uid="uid://cpk1ecwlfoocc" path="res://sprites/room2/liczby2.png" id="5_gm8lp"]
+[ext_resource type="Texture2D" uid="uid://dkdl7n8l3tx08" path="res://sprites/room2/liczby3.png" id="6_q7pj1"]
 [ext_resource type="Texture2D" uid="uid://dbb4lfa4rwmmg" path="res://sprites/room2/fire.png" id="6_sqj6n"]
 [ext_resource type="Texture2D" uid="uid://d37m44qssf7on" path="res://sprites/room2/2.png" id="8_slqss"]
 [ext_resource type="Script" uid="uid://cn0qwjmhqnil4" path="res://scripts/candle.gd" id="9_slqss"]
@@ -61,6 +64,21 @@ texture = ExtResource("3_46tr2")
 [node name="Swiecznik" type="Node2D" parent="."]
 position = Vector2(27, 2)
 
+[node name="Liczby" type="Sprite2D" parent="Swiecznik"]
+position = Vector2(1201, 374.2945)
+scale = Vector2(0.40889826, 0.40889817)
+texture = ExtResource("4_c62yl")
+
+[node name="Liczby2" type="Sprite2D" parent="Swiecznik"]
+position = Vector2(1055, 374.2945)
+scale = Vector2(0.40889826, 0.40889817)
+texture = ExtResource("5_gm8lp")
+
+[node name="Liczby3" type="Sprite2D" parent="Swiecznik"]
+position = Vector2(897.8125, 374.2945)
+scale = Vector2(0.40889826, 0.40889817)
+texture = ExtResource("6_q7pj1")
+
 [node name="Swiecznik" type="Sprite2D" parent="Swiecznik"]
 position = Vector2(1052.0001, 634)
 scale = Vector2(0.41003042, 0.4100303)
@@ -88,8 +106,8 @@ position = Vector2(451, 150)
 scale = Vector2(0.55878645, 0.5773096)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Swiecznik/Candle1/Candle1"]
-position = Vector2(810, 685)
-scale = Vector2(1.279045, 8.134577)
+position = Vector2(801.7373, 644.36835)
+scale = Vector2(1.9232982, 9.728176)
 shape = SubResource("CircleShape2D_83skf")
 
 [node name="Area1" type="Area2D" parent="Swiecznik/Candle1"]
@@ -124,8 +142,8 @@ position = Vector2(593, 99)
 scale = Vector2(0.56886965, 0.6489629)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Swiecznik/Candle2/Candle2"]
-position = Vector2(810, 685)
-scale = Vector2(1.3733343, 8.019218)
+position = Vector2(810.37897, 654.89105)
+scale = Vector2(1.584279, 8.512312)
 shape = SubResource("CircleShape2D_83skf")
 
 [node name="Area2" type="Area2D" parent="Swiecznik/Candle2"]
@@ -160,7 +178,7 @@ position = Vector2(685, 36)
 scale = Vector2(0.63714963, 0.7337839)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Swiecznik/Candle3/Candle3"]
-position = Vector2(810, 685)
+position = Vector2(812.99585, 662.3203)
 scale = Vector2(1.9475608, 7.996481)
 shape = SubResource("CircleShape2D_83skf")
 

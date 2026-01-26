@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 global="*res://scripts/global.gd"
 GameManager="*res://scripts/game_manager.gd"
 InventoryManager="*res://scripts/inventory_manager.gd"
+GlobalLog="*res://logging/GlobalLog.gd"
 
 [display]
 
