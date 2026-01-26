@@ -41,6 +41,7 @@ func save_final_log():
 	current_data.total_time_in_minutes = str(minutes) + " min " + str(seconds) + " s"
 	
 	current_data.items_collected = GameManager.finish_items_collected
+	current_data.gems_order_of_placement = GameManager.gems_found
 	
 	var build_folder = OS.get_executable_path().get_base_dir()
 	var file_name = "/log_P" + current_data.user_id + ".tres"

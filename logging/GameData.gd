@@ -17,3 +17,4 @@ class_name GameData
 @export var total_time_in_minutes: String = "" 
 
 @export var items_collected: Array = []             #do pytania o półki
+@export var gems_order_of_placement: Array = []		#do pytania o kolejność włożenia klejnotów
