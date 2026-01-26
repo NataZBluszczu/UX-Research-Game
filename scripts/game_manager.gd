@@ -4,7 +4,7 @@ var input_locked := false
 
 var selected_item = null
 var selected_vial = null
-var is_drag_mode = true  
+var is_drag_mode = false  
 
 var is_cauldron_activated = false
 
@@ -12,10 +12,11 @@ func _on_anim_finished() -> void:
 	input_locked = false
 
 func _ready() -> void:
-	DisplayServer.window_set_size(Vector2i(1280,720))
-	var centre_screen = DisplayServer.screen_get_position() + DisplayServer.screen_get_size()/2
-	var window_size = get_window().get_size_with_decorations()
-	get_window().set_position(centre_screen - window_size/2)
+	DisplayServer.window_set_size(Vector2i(1920,1080))
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#var centre_screen = DisplayServer.screen_get_position() + DisplayServer.screen_get_size()/2
+	#var window_size = get_window().get_size_with_decorations()
+	#get_window().set_position(centre_screen - window_size/2)
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
