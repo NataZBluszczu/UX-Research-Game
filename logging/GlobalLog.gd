@@ -3,13 +3,16 @@ extends Node
 var current_data = GameData.new()
 var start_time: int
 var last_mouse_pos: Vector2
+var is_active: bool = false
 
 func _ready():
 	current_data.user_id = get_next_user_id()
-	start_time = Time.get_ticks_msec()
+	#start_time = Time.get_ticks_msec()
 	last_mouse_pos = get_viewport().get_mouse_position()
 	
 func _process(delta):
+	if not is_active:
+		return
 	var current_mouse_pos = get_viewport().get_mouse_position()
 	var frame_dist = last_mouse_pos.distance_to(current_mouse_pos)
 	
@@ -25,6 +28,8 @@ func _process(delta):
 	last_mouse_pos = current_mouse_pos
 
 func _input(event):
+	if not is_active:
+		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			current_data.total_clicks += 1
@@ -76,3 +81,9 @@ func get_next_user_id() -> String:
 			file_name = dir.get_next()
 	
 	return "%02d" % (max_id + 1)
+
+func start_logging():
+	start_time = Time.get_ticks_msec()
+	last_mouse_pos = get_viewport().get_mouse_position()
+	is_active = true
+	print("Logowanie rozpoczęte!")
