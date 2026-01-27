@@ -4,7 +4,7 @@ var input_locked := false
 
 var selected_item = null
 var selected_vial = null
-var is_drag_mode = false  
+var is_drag_mode = true  
 
 var is_cauldron_activated = false
 
@@ -21,8 +21,9 @@ func _ready() -> void:
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Q:
-			is_drag_mode = !is_drag_mode
-			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
+#			is_drag_mode = !is_drag_mode
+#			print("Tryb: ", "Drag-Drop" if is_drag_mode else "Point-Click")
+			pass
 		if event.is_action_pressed("2"):
 			print(selected_vial)
 
