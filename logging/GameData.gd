@@ -2,7 +2,7 @@ extends Resource
 class_name GameData
 
 @export var user_id: String = ""
-@export var version: String = "Drag"
+@export var version: String = "Click"
 
 # Sekcja Czasu
 @export var total_time_seconds: float = 0.0          # całkowity czas sesji
