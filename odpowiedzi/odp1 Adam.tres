@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://logging/GameData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+user_id = "01"
+version = "Click"
+total_time_seconds = 1242.158
+total_mouse_move_time = 561.3618886669092
+total_drag_time = 0.0
+total_mouse_dist = 695896.1067588329
+total_drag_dist = 0.0
+total_clicks = 950
+total_time_in_minutes = "20 min 42 s"
+items_collected = ["Dreamcatcher", "Board", "Ball", "Amulet"]
+gems_order_of_placement = ["Orange", "Green", "Yellow", "Purple"]
