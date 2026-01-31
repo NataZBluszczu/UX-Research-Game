@@ -9,7 +9,8 @@ var offset: Vector2
 var initialPos : Vector2
 var is_selected = false
 var above_cauldron = false
-var drag_started_here = false  
+var drag_started_here = false 
+var actually_dragged = false
 
 func _ready() -> void:
 	GameManager.vial_quest_finished.connect(_on_vial_quest_finished)
@@ -22,6 +23,7 @@ func _process(delta):
 		if draggable:
 			if Input.is_action_just_pressed("click"):
 				drag_started_here = true 
+				actually_dragged = false
 				initialPos = global_position
 				offset = get_global_mouse_position() - global_position
 				global.is_dragging = true
@@ -30,6 +32,8 @@ func _process(delta):
 				
 			if Input.is_action_pressed("click") and drag_started_here: 
 				global_position = get_global_mouse_position() - offset
+				if global_position.distance_to(initialPos) > 1:
+					actually_dragged = true
 				
 			elif Input.is_action_just_released("click"):
 				global.is_dragging = false
@@ -37,13 +41,14 @@ func _process(delta):
 				_on_drag_end()
 				
 				drag_started_here = false
-				draggable = false
+				if actually_dragged:
+					draggable = false
+				actually_dragged = false
 				
 				var tween = get_tree().create_tween()
 				if above_cauldron:
 					if GameManager.is_cauldron_activated == true:
 						GameManager.add_vial_to_cauldron(name)
-						body_ref.get_parent().pulse_animation(name)
 				GameManager.input_locked = true
 				tween.tween_property(self,"global_position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 				await tween.finished
@@ -115,3 +120,5 @@ func _on_drag_start():
 
 func _on_drag_end():
 	z_index = 0
+	if not is_selected:
+		scale = Vector2(1,1)

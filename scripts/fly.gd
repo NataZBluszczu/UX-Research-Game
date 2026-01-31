@@ -10,6 +10,7 @@ var initialPos : Vector2
 var is_selected = false
 var above_cauldron = false
 var drag_started_here = false 
+var actually_dragged = false
 
 func _ready() -> void:
 	fly_nr = name.right(1)
@@ -22,6 +23,7 @@ func _process(delta):
 		if draggable:
 			if Input.is_action_just_pressed("click"):
 				drag_started_here = true  
+				actually_dragged = false
 				initialPos = global_position
 				offset = get_global_mouse_position() - global_position
 				global.is_dragging = true
@@ -29,13 +31,19 @@ func _process(delta):
 				
 			if Input.is_action_pressed("click") and drag_started_here: 
 				global_position = get_global_mouse_position() - offset
+				if global_position.distance_to(initialPos) > 5:
+					actually_dragged = true
 				
 			elif Input.is_action_just_released("click"):
+				if not is_selected:
+					scale = Vector2(1,1)
 				global.is_dragging = false
 				global.non_eq_dragging = false
 				
 				drag_started_here = false
-				draggable = false
+				if actually_dragged:
+					draggable = false
+				actually_dragged = false
 				
 				var tween = get_tree().create_tween()
 				if above_cauldron:

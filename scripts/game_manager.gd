@@ -46,21 +46,23 @@ signal vial_quest_finished
 signal finish_quest_finished
 signal finish_item_added(item_name: String, shelf_nr: String)
 
-func add_to_cauldron(item_name: String):
-	if item_name in cauldron_items and item_name not in collected_items:
-		collected_items.append(item_name)
-		if collected_items.size() == 3:
-			spawn_amulet.emit()
 			
+signal reset_cauldron
+signal vial_added(color: String)
+
 func add_vial_to_cauldron(color: String):
 	added_vials.append(color)
-	if added_vials == pattern:
-		vial_quest_finished.emit()
-		spawn_amulet.emit()
-		print("TRAFIONY WZÓR!")
-
-func reset_vials():
-	added_vials = []
+	if added_vials.size() == 7:
+		if added_vials == pattern:
+			vial_added.emit(color)
+			vial_quest_finished.emit()
+			spawn_amulet.emit()
+			print("TRAFIONY WZÓR!")
+		else:
+			reset_cauldron.emit()
+			added_vials = []
+	else:
+		vial_added.emit(color)
 
 func ends_with_pattern(seq: Array, pat: Array) -> bool:
 	if seq.size() < pat.size():

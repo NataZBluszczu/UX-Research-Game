@@ -12,6 +12,7 @@ var above_shelf = false
 var above_gems = false
 var above_cauldron = false
 var drag_started_here = false 
+var actually_dragged = false
 
 func _process(delta):
 	if GameManager.input_locked: 
@@ -21,19 +22,24 @@ func _process(delta):
 		if draggable:
 			if Input.is_action_just_pressed("click"):
 				drag_started_here = true 
+				actually_dragged = false
 				initialPos = global_position
 				offset = get_global_mouse_position() - global_position
 				global.is_dragging = true
 				_on_drag_start()
 			if Input.is_action_pressed("click") and drag_started_here:  
 				global_position = get_global_mouse_position() - offset
-				
+				if global_position.distance_to(initialPos) > 1:
+					actually_dragged = true
 			elif Input.is_action_just_released("click"):
 				global.is_dragging = false
 				
 				drag_started_here = false
-				draggable = false
+				if actually_dragged:
+					draggable = false
+				actually_dragged = false
 				_on_drag_end()
+				
 				var tween = get_tree().create_tween()
 				if is_inside_dropable:
 					var slot_index = body_ref.get_slot_index()

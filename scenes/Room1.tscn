@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2dq226a7wlrv"]
+[gd_scene load_steps=30 format=3 uid="uid://d2dq226a7wlrv"]
 
 [ext_resource type="Script" uid="uid://b045otqpdajkm" path="res://scripts/room_1.gd" id="1_i1w2g"]
 [ext_resource type="Texture2D" uid="uid://ctsq7ta00a7gx" path="res://sprites/room1/room1-background.png" id="1_um1ds"]
@@ -29,8 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://dhsebw80epapa" path="res://sprites/deko3.png" id="19_kj0mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj4ne"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l3kxn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t64ac"]
 radius = 5.405403
@@ -126,16 +124,6 @@ visible = false
 position = Vector2(931, 801)
 scale = Vector2(20.925, 20.925)
 shape = SubResource("CircleShape2D_bj4ne")
-
-[node name="Fire2" type="Node2D" parent="Cauldron"]
-position = Vector2(937, 939)
-
-[node name="FireArea" type="Area2D" parent="Cauldron/Fire2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/Fire2/FireArea"]
-position = Vector2(-7.000001, -42.000004)
-scale = Vector2(11.01913, 5.6373334)
-shape = SubResource("CircleShape2D_l3kxn")
 
 [node name="Amulet" parent="." instance=ExtResource("7_bc387")]
 position = Vector2(963, 499)
@@ -243,9 +231,6 @@ position = Vector2(294, 858)
 
 [connection signal="input_event" from="Cauldron/CauldronBody" to="Cauldron" method="_on_cauldron_input_event"]
 [connection signal="input_event" from="Cauldron/Area2D" to="Cauldron" method="_on_area_2d_input_event"]
-[connection signal="input_event" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_input_event"]
-[connection signal="mouse_entered" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_mouse_entered"]
-[connection signal="mouse_exited" from="Cauldron/Fire2/FireArea" to="Cauldron" method="_on_fire_area_mouse_exited"]
 [connection signal="body_entered" from="Purple/Area2D" to="Purple" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Purple/Area2D" to="Purple" method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Purple/Area2D" to="Purple" method="_on_area_2d_mouse_entered"]
