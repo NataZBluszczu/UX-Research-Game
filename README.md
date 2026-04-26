@@ -1,4 +1,7 @@
 # Interaction Telemetry Lab: A Gamified A/B Testing Framework
+
+<img width="1834" height="1028" alt="Image" src="https://github.com/user-attachments/assets/42bad44d-6624-4834-8a22-8804d582d1f6" />
+
 ## 🎯 Project Overview
 This project is a gamified 2D research environment developed as part of my B.Sc. Engineering Thesis. It was designed to conduct **A/B testing** on human-computer interaction methods, specifically comparing **Drag-and-Drop** vs. **Point-and-Click** mechanics.
 
