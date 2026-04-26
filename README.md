@@ -1,5 +1,4 @@
 # Interaction Telemetry Lab: A Gamified A/B Testing Framework
-
 ## 🎯 Project Overview
 This project is a gamified 2D research environment developed as part of my B.Sc. Engineering Thesis. It was designed to conduct **A/B testing** on human-computer interaction methods, specifically comparing **Drag-and-Drop** vs. **Point-and-Click** mechanics.
 
@@ -24,6 +23,10 @@ The framework successfully facilitated a study on 30 participants, leading to ac
 * **+44.7% Relative Memory Lift** observed in the Drag-and-Drop group.
 * **Significant reduction in cognitive load** (Mental Demand) validated through NASA-TLX metrics.
 * Proven independence of results from time-on-task through **Pearson correlation analysis**.
+
+<img width="1919" height="1079" alt="Image" src="https://github.com/user-attachments/assets/9ba3aca8-907b-472d-a39f-adb7d812b492" />
+
+<img width="1919" height="1079" alt="Image" src="https://github.com/user-attachments/assets/12face26-19f5-4baf-a56e-ddbfcd0c0ad8" />
 
 ---
 *Developed as a Bachelor of Science Engineering Project.*
